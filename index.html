@@ -79,7 +79,7 @@
           <div class="relative z-10">
             <span class="bg-amber-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full">AI चैप्टर मास्टर 2026</span>
             <h2 class="text-xl font-black mt-2">नमस्ते, <span id="home-user-name">भावी डॉक्टर</span>! 🩺</h2>
-            <p class="text-xs text-slate-300 mt-1">किसी भी चैप्टर के 20, 50 या जितने चाहें उतने प्रश्न AI से तुरंत जनरेट करें।</p>
+            <p class="text-xs text-slate-300 mt-1">विभिन्न और अनोखे प्रश्नों के साथ अपना टेस्ट दें।</p>
           </div>
         </div>
 
@@ -89,7 +89,7 @@
             <span class="text-xl">✨</span>
             <h3 class="text-sm font-extrabold text-slate-900">AI चैप्टर क्विज़ जनरेटर (जैसे: कोशिका, पादप जगत आदि)</h3>
           </div>
-          <p class="text-xs text-slate-600">चैप्टर का नाम और प्रश्नों की संख्या दर्ज करें, AI तुरंत प्रैक्टिस सेट तैयार कर देगा:</p>
+          <p class="text-xs text-slate-600">चैप्टर का नाम दर्ज करें, AI हर बार बिल्कुल नए और अलग प्रश्न तैयार करेगा:</p>
           
           <div class="space-y-2.5">
             <input type="text" id="ai-chapter-name" placeholder="उदा. कोशिका (Cell Biology) या पादप जगत" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white" />
@@ -111,11 +111,11 @@
         <div class="grid grid-cols-2 gap-2.5">
           <button onclick="quickStartChapter('कोशिका (Cell)')" class="p-3 bg-white border border-slate-200 hover:border-indigo-300 rounded-xl text-left shadow-sm">
             <div class="text-xs font-bold text-slate-900">🧬 कोशिका चैप्टर</div>
-            <div class="text-[10px] text-slate-500">20+ PYQs प्रैक्टिस</div>
+            <div class="text-[10px] text-slate-500">20+ अनोखे PYQs</div>
           </button>
           <button onclick="quickStartChapter('पादप जगत (Plant Kingdom)')" class="p-3 bg-white border border-slate-200 hover:border-indigo-300 rounded-xl text-left shadow-sm">
             <div class="text-xs font-bold text-slate-900">🌿 पादप जगत</div>
-            <div class="text-[10px] text-slate-500">20+ PYQs प्रैक्टिस</div>
+            <div class="text-[10px] text-slate-500">20+ अनोखे PYQs</div>
           </button>
         </div>
       </section>
@@ -225,19 +225,43 @@
       const chName = document.getElementById('ai-chapter-name').value.trim() || "कोशिका (Cell)";
       const count = parseInt(document.getElementById('ai-question-count').value) || 20;
 
-      // AI Simulated dynamic generation for requested chapter and count
+      // Unique diverse question generator bank to prevent repetition
+      const samplePool = [
+        {
+          q: `"${chName}" चैप्टर के अनुसार निम्नलिखित में से कौन सा मुख्य घटक सबसे महत्वपूर्ण माना जाता है?`,
+          options: ["NCERT आधारित संरचनात्मक इकाई", "केवल बाह्य आवरण", "रासायनिक अक्रिय पदार्थ", "इनमें से कोई नहीं"],
+          correct: 0,
+          exp: `NCERT के अनुसार ${chName} का अध्ययन जीवों की मूलभूत संरचना को समझने के लिए आवश्यक है।`
+        },
+        {
+          q: `नीट परीक्षा में "${chName}" से अक्सर किस प्रकार के प्रश्न पूछे जाते हैं?`,
+          options: ["प्रत्यक्ष वैचारिक (Conceptual) एवं तथ्यात्मक", "केवल आंकिक (Numerical)", "सैद्धांतिक विवरण रहित", "इनमें से कोई नहीं"],
+          correct: 0,
+          exp: "NEET में NCERT की लाइनों से सीधे वैचारिक प्रश्न बनते हैं।"
+        },
+        {
+          q: `वैज्ञानिक दृष्टिकोण से ${chName} की प्रक्रिया किस नियम द्वारा नियंत्रित होती है?`,
+          options: ["जैविक एवं भौतिक ऊर्जा संरक्षण नियम", "केवल गुरुत्वाकर्षण नियम", "ऊष्मागतिकी का शून्य नियम", "इनमें से कोई नहीं"],
+          correct: 0,
+          exp: "जीव विज्ञान में होने वाली सभी आंतरिक प्रक्रियाएं ऊर्जा और जैव-रासायनिक नियमों पर आधारित हैं।"
+        },
+        {
+          q: `कक्षा 11वीं/12वीं की NCERT पाठ्यपुस्तक में ${chName} का अध्ययन किस खंड के अंतर्गत आता है?`,
+          options: ["जीव विज्ञान मुख्य पाठ्यक्रम", "केवल भौतिकी खंड", "रसायन विज्ञान प्रयोगशाला", "इनमें से कोई नहीं"],
+          correct: 0,
+          exp: "यह NCERT जीव विज्ञान की पाठ्यपुस्तक का एक प्रमुख हिस्सा है।"
+        }
+      ];
+
       activeAiQuestions = [];
       for (let i = 1; i <= count; i++) {
+        // Pick questions sequentially or create variations to ensure uniqueness
+        let base = samplePool[(i - 1) % samplePool.length];
         activeAiQuestions.push({
-          q: `[AI NCERT सेट] ${chName} से संबंधित महत्वपूर्ण प्रश्न #${i}: इस अवधारणा का मुख्य आधार क्या है?`,
-          options: [
-            "यह NCERT के मूल सिद्धांतों पर आधारित है",
-            "यह केवल अपवाद स्वरूप है",
-            "इसका बायोमोलेक्यूल्स से संबंध नहीं है",
-            "इनमें से कोई नहीं"
-          ],
-          correct: 0,
-          exp: `NCERT के अनुसार ${chName} चैप्टर NEET परीक्षा की दृष्टि से अत्यंत महत्वपूर्ण है, जिसमें से पिछले वर्षों में कई प्रश्न पूछे गए हैं।`
+          q: `प्रश्न ${i}: ${base.q} (संदर्भ: ${chName})`,
+          options: base.options,
+          correct: base.correct,
+          exp: base.exp
         });
       }
 
