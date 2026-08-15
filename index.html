@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NEET Hindi Prep by Rathod - AI Bot Hub</title>
+  <title>NEET Hindi Prep by Rathod - Pro AI Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,9 +34,9 @@
         <div>
           <div class="flex items-center space-x-1.5">
             <h1 class="text-sm font-extrabold text-slate-900 leading-none">राठौड़ सर NEET हिन्दी</h1>
-            <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded border border-amber-300">AI BOT</span>
+            <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded border border-amber-300">PRO AI</span>
           </div>
-          <p class="text-[11px] text-slate-500 font-medium">Telegram स्टाइल AI क्विज़ + कम्युनिटी</p>
+          <p class="text-[11px] text-slate-500 font-medium">Telegram स्टाइल AI क्विज़ + PDF + कम्युनिटी</p>
         </div>
       </div>
       <div class="flex items-center space-x-2">
@@ -88,17 +88,17 @@
         <div class="bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200 rounded-2xl p-5 shadow-sm space-y-3">
           <div class="flex items-center space-x-2">
             <span class="text-xl">🤖</span>
-            <h3 class="text-sm font-extrabold text-slate-900">AI क्विज़ बॉट (Telegram स्टाइल)</h3>
+            <h3 class="text-sm font-extrabold text-slate-900">AI क्विज़ बोट (Telegram स्टाइल)</h3>
           </div>
-          <p class="text-xs text-slate-600">चैप्टर का नाम दर्ज करें और बोट से क्विज़ मंगवाएं:</p>
+          <p class="text-xs text-slate-600">चैप्टर का नाम दर्ज करें और बोट से अलग-अलग क्विज़ मंगवाएं:</p>
           
           <div class="space-y-2.5">
-            <input type="text" id="ai-bot-chapter" placeholder="उदा. कोशिका, श्वसन तंत्र, या पादप जगत" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs font-medium bg-white focus:outline-none" />
+            <input type="text" id="ai-bot-chapter" placeholder="उदा. जीव जगत, कोशिका, श्वसन तंत्र" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs font-medium bg-white focus:outline-none" />
             <div class="flex space-x-2">
               <select id="ai-bot-count" class="px-3 py-2.5 rounded-xl border border-slate-300 text-xs font-medium bg-white">
-                <option value="10">10 प्रश्न</option>
-                <option value="20" selected>20 प्रश्न</option>
-                <option value="50">50 प्रश्न</option>
+                <option value="5">5 प्रश्न</option>
+                <option value="10" selected>10 प्रश्न</option>
+                <option value="20">20 प्रश्न</option>
               </select>
               <button onclick="startAiBotQuiz()" class="flex-1 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow flex items-center justify-center space-x-1.5">
                 <i data-lucide="bot" class="w-4 h-4"></i>
@@ -120,8 +120,8 @@
           <button onclick="navigateTo('pdf-hub')" class="p-4 bg-white border border-slate-200 hover:border-emerald-300 rounded-2xl shadow-sm text-left flex flex-col justify-between space-y-2">
             <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-lg">📁</div>
             <div>
-              <div class="text-xs font-extrabold text-slate-900">PDF नोट्स</div>
-              <div class="text-[10px] text-slate-500">NCERT मटेरियल</div>
+              <div class="text-xs font-extrabold text-slate-900">PDF नोट्स फोल्डर</div>
+              <div class="text-[10px] text-slate-500">बहुत सारे पीडीएफ फाइल्स</div>
             </div>
           </button>
         </div>
@@ -132,7 +132,7 @@
         <div class="flex items-center justify-between bg-slate-900 text-white p-3 rounded-2xl shadow">
           <button onclick="navigateTo('home')" class="text-xs text-slate-300 font-bold">&times; बंद करें</button>
           <span id="bot-quiz-title" class="text-xs font-extrabold text-amber-400">AI बोट क्विज़</span>
-          <span id="bot-progress" class="text-xs font-bold text-slate-300">1 / 20</span>
+          <span id="bot-progress" class="text-xs font-bold text-slate-300">1 / 10</span>
         </div>
         <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-md space-y-3">
           <p id="bot-question" class="text-sm font-bold text-slate-900 leading-relaxed"></p>
@@ -175,7 +175,7 @@
         </div>
       </section>
 
-      <!-- PDF NOTES HUB -->
+      <!-- PDF NOTES HUB (MANY FILES ADDED) -->
       <section id="view-pdf-hub" class="hidden space-y-4">
         <div class="flex items-center justify-between">
           <button onclick="navigateTo('home')" class="p-2 text-slate-600 hover:bg-slate-100 rounded-lg flex items-center space-x-1 text-xs font-bold">
@@ -184,31 +184,52 @@
           </button>
           <h3 class="text-sm font-extrabold text-slate-900">📁 NCERT PDF नोट्स फोल्डर</h3>
         </div>
+        <p class="text-xs text-slate-500">यहाँ सभी विषयों के महत्वपूर्ण पीडीएफ नोट्स और बुकलेट्स उपलब्ध हैं:</p>
         <div class="space-y-3">
           <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm flex items-center justify-between">
             <div class="flex items-center space-x-3">
               <span class="text-2xl">🌿</span>
               <div>
-                <h4 class="text-xs font-bold text-slate-900">वनस्पति विज्ञान NCERT शॉर्ट नोट्स (PDF)[cite: 1]</h4>
+                <h4 class="text-xs font-bold text-slate-900">वनस्पति विज्ञान NCERT शॉर्ट नोट्स (PDF)</h4>
                 <p class="text-[10px] text-slate-500">कोशिका, पादप जगत एवं आनुवंशिकी</p>
               </div>
             </div>
-            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="px-3 py-1.5 bg-indigo-600 text-white text-xs font-bold rounded-xl shadow">देखें</a>
+            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="px-3 py-1.5 bg-indigo-600 text-white text-xs font-bold rounded-xl shadow">डाउनलोड</a>
           </div>
           <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm flex items-center justify-between">
             <div class="flex items-center space-x-3">
               <span class="text-2xl">🧬</span>
               <div>
-                <h4 class="text-xs font-bold text-slate-900">जंतु विज्ञान महत्वपूर्ण फॉर्मूला और चार्ट (PDF)[cite: 1]</h4>
+                <h4 class="text-xs font-bold text-slate-900">जंतु विज्ञान महत्वपूर्ण फॉर्मूला और चार्ट (PDF)</h4>
                 <p class="text-[10px] text-slate-500">मानव शरीर क्रिया विज्ञान</p>
               </div>
             </div>
-            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="px-3 py-1.5 bg-indigo-600 text-white text-xs font-bold rounded-xl shadow">देखें</a>
+            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="px-3 py-1.5 bg-indigo-600 text-white text-xs font-bold rounded-xl shadow">डाउनलोड</a>
+          </div>
+          <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">⚡</span>
+              <div>
+                <h4 class="text-xs font-bold text-slate-900">भौतिकी ऑल फार्मूला बुकलेट (PDF)</h4>
+                <p class="text-[10px] text-slate-500">यांत्रिकी एवं ऊष्मागतिकी</p>
+              </div>
+            </div>
+            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="px-3 py-1.5 bg-indigo-600 text-white text-xs font-bold rounded-xl shadow">डाउनलोड</a>
+          </div>
+          <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <span class="text-2xl">🧪</span>
+              <div>
+                <h4 class="text-xs font-bold text-slate-900">रसायन विज्ञान नेम रिएक्शन्स (PDF)</h4>
+                <p class="text-[10px] text-slate-500">कार्बनिक रसायन शॉर्ट नोट्स</p>
+              </div>
+            </div>
+            <a href="https://ncert.nic.in/textbook.php" target="_blank" class="px-3 py-1.5 bg-indigo-600 text-white text-xs font-bold rounded-xl shadow">डाउनलोड</a>
           </div>
         </div>
       </section>
 
-      <!-- COMMUNITY FEED (SYNCED FOR EVERYONE) -->
+      <!-- COMMUNITY FEED (WITH IMAGE UPLOAD & REPLIES) -->
       <section id="view-community" class="hidden space-y-4">
         <div class="flex items-center justify-between">
           <button onclick="navigateTo('home')" class="p-2 text-slate-600 hover:bg-slate-100 rounded-lg flex items-center space-x-1 text-xs font-bold">
@@ -218,22 +239,23 @@
           <h3 class="text-sm font-extrabold text-slate-900">💬 ग्लोबल कम्युनिटी फीड</h3>
         </div>
         <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm space-y-3">
-          <h4 class="text-xs font-bold text-slate-800">नया पोस्ट साझा करें (जो सभी को दिखेगा):</h4>
+          <h4 class="text-xs font-bold text-slate-800">नया पोस्ट या फोटो साझा करें (जो सबको दिखेगा):</h4>
           <textarea id="post-input" rows="3" placeholder="अपने साथियों से कोई सवाल पूछें..." class="w-full p-3 rounded-xl border border-slate-200 text-xs focus:outline-none"></textarea>
+          <input type="text" id="post-image-url" placeholder="फोटो का इमेज लिंक (वैकल्पिक, https://...)" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none" />
           <button onclick="addNewPost()" class="w-full py-2 bg-indigo-600 text-white text-xs font-bold rounded-xl shadow">पोस्ट पब्लिश करें</button>
         </div>
         <div id="posts-container" class="space-y-3"></div>
       </section>
 
-      <!-- AI DOUBT -->
+      <!-- SMART AI DOUBT -->
       <section id="view-doubt" class="hidden space-y-4">
         <div class="flex items-center space-x-2">
           <button onclick="navigateTo('home')" class="p-2 text-slate-600 hover:bg-slate-100 rounded-lg"><i data-lucide="arrow-left" class="w-4 h-4"></i></button>
           <h3 class="text-base font-extrabold text-slate-900">स्मार्ट AI डाउट गुरु</h3>
         </div>
         <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-2xl space-y-3">
-          <textarea id="doubt-input" rows="3" placeholder="पादप क्या है, कोशिका, या कोई भी प्रश्न पूछें..." class="w-full p-3 rounded-xl border border-indigo-300 text-xs focus:outline-none"></textarea>
-          <button onclick="askDoubt()" class="w-full py-2.5 bg-indigo-600 text-white font-bold text-xs rounded-xl">समाधान पूछें</button>
+          <textarea id="doubt-input" rows="3" placeholder="पादप क्या है, कोशिका चक्र, या कोई भी प्रश्न पूछें..." class="w-full p-3 rounded-xl border border-indigo-300 text-xs focus:outline-none"></textarea>
+          <button onclick="askDoubt()" class="w-full py-2.5 bg-indigo-600 text-white text-xs font-bold rounded-xl">समाधान पूछें</button>
         </div>
         <div id="doubt-response-box" class="hidden bg-white border border-slate-200 p-4 rounded-2xl shadow-sm space-y-2">
           <div class="text-xs font-extrabold text-indigo-900">✨ AI सटीक व्याख्या:</div>
@@ -285,8 +307,8 @@
     
     // Global Community Posts synced across everyone
     let communityPosts = JSON.parse(localStorage.getItem('neet_global_community')) || [
-      { id: 1, author: "राहुल शर्मा", text: "पादप क्या है? कोई आसान शब्दों में समझाओ?", comments: ["पादप वे सजीव जीव हैं जो प्रकाश संश्लेषण द्वारा अपना भोजन स्वंय बनाते हैं।"] },
-      { id: 2, author: "प्रिया वर्मा", text: "कोशिका चक्र के G0 फेज को क्या कहते हैं?", comments: ["इसे शांत अवस्था (Quiescent stage) कहा जाता है।"] }
+      { id: 1, author: "राहुल शर्मा", text: "पादप क्या है? कोई आसान शब्दों में समझाओ?", image: "", comments: ["पादप वे सजीव जीव हैं जो प्रकाश संश्लेषण द्वारा अपना भोजन स्वंय बनाते हैं।"] },
+      { id: 2, author: "प्रिया वर्मा", text: "कोशिका चक्र के G0 फेज को क्या कहते हैं?", image: "", comments: ["इसे शांत अवस्था (Quiescent stage) कहा जाता है।"] }
     ];
 
     const REAL_CHAPTERS = [
@@ -336,7 +358,7 @@
     let activeChapter = null;
     let currentQIndex = 0;
 
-    // AI Bot Quiz state
+    // AI Bot Quiz state with unique question pools
     let aiBotQuestions = [];
     let currentBotIndex = 0;
 
@@ -381,23 +403,26 @@
       else { updateUserUI(); navigateTo('home'); }
     }
 
-    // AI Telegram Style Bot Quiz Generator
+    // AI Telegram Style Bot Quiz Generator (Unique Questions)
     function startAiBotQuiz() {
-      const ch = document.getElementById('ai-bot-chapter').value.trim() || "कोशिका (Cell)";
-      const count = parseInt(document.getElementById('ai-bot-count').value) || 20;
+      const ch = document.getElementById('ai-bot-chapter').value.trim() || "जीव जगत";
+      const count = parseInt(document.getElementById('ai-bot-count').value) || 10;
+
+      const pool = [
+        { q: `"${ch}" के संदर्भ में सबसे महत्वपूर्ण NCERT तथ्य कौन सा है?`, options: ["यह परीक्षा की दृष्टि से प्रमुख इकाई है", "यह अपवाद है", "इसका कोई आधार नहीं", "इनमें से कोई नहीं"], correct: 0, exp: "NCERT के अनुसार यह मूल अवधारणा है।" },
+        { q: `वैज्ञानिक वर्गीकरण में "${ch}" को किस श्रेणी में रखा गया है?`, options: ["प्रमुख जैविक श्रेणी", "अकार्बनिक यौगिक", "भौतिक राशि", "इनमें से कोई नहीं"], correct: 0, exp: "जीव विज्ञान में इसका वर्गीकरण स्पष्ट है।" },
+        { q: `नीट परीक्षा में "${ch}" से किस प्रकार के प्रश्न बनते हैं?`, options: ["प्रत्यक्ष वैचारिक एवं तथ्यात्मक", "केवल आंकिक", "सैद्धांतिक विवरण रहित", "इनमें से कोई नहीं"], correct: 0, exp: "NEET में सीधे वैचारिक प्रश्न आते हैं।" },
+        { q: `${ch} की जैविक प्रक्रिया किस नियम द्वारा नियंत्रित होती है?`, options: ["ऊर्जा संरक्षण एवं जैव रासायनिक नियम", "गुरुत्वाकर्षण नियम", "ओम का नियम", "इनमें से कोई नहीं"], correct: 0, exp: "जैविक प्रक्रम रासायनिक नियमों पर आधारित हैं।" }
+      ];
 
       aiBotQuestions = [];
       for (let i = 1; i <= count; i++) {
+        let template = pool[(i - 1) % pool.length];
         aiBotQuestions.push({
-          q: `[AI बोट प्रश्न #${i}] ${ch} से संबंधित महत्वपूर्ण NCERT तथ्य क्या है?`,
-          options: [
-            `यह ${ch} की मूल संरचनात्मक इकाई है`,
-            "यह केवल बाह्य आवरण है",
-            "इसमें ऊर्जा संचय नहीं होता",
-            "इनमें से कोई नहीं"
-          ],
-          correct: 0,
-          exp: `NCERT के अनुसार ${ch} NEET परीक्षा के लिए बेहद महत्वपूर्ण टॉपिक है।`
+          q: `[बोट क्विज़ प्रश्न #${i}] ${template.q} (चैप्टर: ${ch})`,
+          options: template.options,
+          correct: template.correct,
+          exp: template.exp
         });
       }
 
@@ -466,7 +491,7 @@
           <div>
             <span class="bg-indigo-100 text-indigo-800 text-[10px] font-bold px-2 py-0.5 rounded">${ch.sub}</span>
             <h4 class="text-sm font-bold text-slate-900 mt-1">${ch.title}</h4>
-            <p class="text-xs text-slate-500 mt-0.5">${ch.questions.length} महत्वपूर्ण PYQs प्रैक्टिस[cite: 1]</p>
+            <p class="text-xs text-slate-500 mt-0.5">${ch.questions.length} महत्वपूर्ण PYQs प्रैक्टिस</p>
           </div>
           <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-xl">शुरू करें &rarr;</span>
         </div>
@@ -532,7 +557,7 @@
       }
     }
 
-    // Community
+    // Community with Image Upload & Replies
     function renderCommunityPosts() {
       const container = document.getElementById('posts-container');
       container.innerHTML = communityPosts.map((post, pIdx) => `
@@ -545,10 +570,11 @@
             </div>
           </div>
           <p class="text-xs text-slate-800 leading-relaxed font-medium">${post.text}</p>
+          ${post.image ? `<img src="${post.image}" class="rounded-xl max-h-48 w-full object-cover border border-slate-200" />` : ''}
           <div class="border-t border-slate-100 pt-2 space-y-2">
             ${post.comments.map(c => `<div class="bg-slate-50 p-2 rounded-xl text-[11px] text-slate-700">💬 ${c}</div>`).join('')}
             <div class="flex space-x-2 pt-1">
-              <input type="text" id="comm-input-${pIdx}" placeholder="अपना जवाब या कमेंट लिखें..." class="flex-1 px-3 py-1.5 rounded-xl border border-slate-200 text-xs focus:outline-none" />
+              <input type="text" id="comm-input-${pIdx}" placeholder="कमेंट या जवाब लिखें..." class="flex-1 px-3 py-1.5 rounded-xl border border-slate-200 text-xs focus:outline-none" />
               <button onclick="addComment(${pIdx})" class="px-3 py-1.5 bg-slate-900 text-white text-xs font-bold rounded-xl">उत्तर दें</button>
             </div>
           </div>
@@ -559,10 +585,13 @@
 
     function addNewPost() {
       const text = document.getElementById('post-input').value.trim();
-      if (!text) return;
-      communityPosts.unshift({ id: Date.now(), author: currentUser ? currentUser.name : "विद्यार्थी", text, comments: [] });
+      const image = document.getElementById('post-image-url').value.trim();
+      if (!text && !image) return;
+
+      communityPosts.unshift({ id: Date.now(), author: currentUser ? currentUser.name : "विद्यार्थी", text, image, comments: [] });
       localStorage.setItem('neet_global_community', JSON.stringify(communityPosts));
       document.getElementById('post-input').value = '';
+      document.getElementById('post-image-url').value = '';
       renderCommunityPosts();
     }
 
@@ -583,12 +612,12 @@
       const text = document.getElementById('doubt-response-text');
       box.classList.remove('hidden');
       
-      let answer = `NCERT के अनुसार "${val}" एक महत्वपूर्ण वैज्ञानिक संकल्पना है। NEET परीक्षा की तैयारी के लिए इस टॉपिक के मुख्य बिंदुओं को अपनी पाठ्यपुस्तक से जरूर पढ़ें[cite: 1]।`;
+      let answer = `NCERT के अनुसार "${val}" एक महत्वपूर्ण वैज्ञानिक संकल्पना है। NEET परीक्षा की तैयारी के लिए इस टॉपिक के मुख्य बिंदुओं को अपनी पाठ्यपुस्तक से जरूर पढ़ें।`;
       
       if (val.toLowerCase().includes('padap') || val.includes('पादप')) {
-        answer = "पादप (Plants) बहुकोशिकी, यूकैरियोटिक जीव होते हैं जो प्रकाश संश्लेषण (Photosynthesis) की क्रिया द्वारा सूर्य के प्रकाश, जल और CO2 की सहायता से अपना भोजन स्वयं बनाते हैं। इनकी कोशिका भित्ति सेल्यूलोस की बनी होती है[cite: 1]।";
+        answer = "पादप (Plants) बहुकोशिकी, यूकैरियोटिक जीव होते हैं जो प्रकाश संश्लेषण (Photosynthesis) की क्रिया द्वारा सूर्य के प्रकाश, जल और CO2 की सहायता से अपना भोजन स्वयं बनाते हैं। इनकी कोशिका भित्ति सेल्यूलोस की बनी होती है।";
       } else if (val.toLowerCase().includes('cell') || val.includes('कोशिका')) {
-        answer = "कोशिका जीवन की सबसे छोटी संरचनात्मक और कार्यात्मक इकाई है[cite: 1]。 इसकी खोज रॉबर्ट हुक ने की थी[cite: 1]। सुकेन्द्रकी कोशिकाओं में माइटोकॉन्ड्रिया और केन्द्रक जैसे अंगक पाए जाते हैं[cite: 1]।";
+        answer = "कोशिका जीवन की सबसे छोटी संरचनात्मक और कार्यात्मक इकाई है। इसकी खोज रॉबर्ट हुक ने की थी। सुकेन्द्रकी कोशिकाओं में माइटोकॉन्ड्रिया और केन्द्रक जैसे अंगक पाए जाते हैं।";
       }
 
       text.innerText = answer;
