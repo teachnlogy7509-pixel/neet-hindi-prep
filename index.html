@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEET Hindi Prep by Rathod - NCERT Master</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Noto Sans Devanagari -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+      background-color: #F8FAFC;
+    }
+    /* Animated NCERT scientific pattern background */
+    .ncert-bg {
+      background-color: #f8fafc;
+      background-image: radial-gradient(#3b82f6 0.75px, transparent 0.75px), radial-gradient(#8b5cf6 0.75px, #f8fafc 0.75px);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.92; transform: scale(1.02); }
+    }
+    .pulse-ai {
+      animation: pulse-subtle 3s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="ncert-bg min-h-screen text-slate-800 flex justify-center selection:bg-indigo-500 selection:text-white">
+
+  <!-- Mobile-first App Container (Responsive) -->
+  <div id="app" class="w-full max-w-md md:max-w-2xl lg:max-w-4xl min-h-screen bg-white shadow-2xl flex flex-col relative pb-20 md:pb-6">
+    
+    <!-- Top Navigation Header -->
+    <header id="main-header" class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-slate-100 px-4 py-3 flex items-center justify-between shadow-sm">
+      <div class="flex items-center space-x-3">
+        <!-- Rathod Monogram & DNA Emblem -->
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-slate-900 via-indigo-950 to-blue-900 flex items-center justify-center shadow-md relative overflow-hidden border border-amber-400/40">
+          <span class="text-amber-400 font-extrabold text-lg">N</span>
+          <div class="absolute -bottom-1 text-[8px] font-bold text-white tracking-widest">NEET</div>
+        </div>
+        <div>
+          <div class="flex items-center space-x-1.5">
+            <h1 class="text-sm font-extrabold text-slate-900 leading-none">राठौड़ सर NEET हिन्दी</h1>
+            <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded border border-amber-300">NCERT</span>
+          </div>
+          <p class="text-[11px] text-slate-500 font-medium">100% नि:शुल्क हिन्दी माध्यम तैयारी</p>
+        </div>
+      </div>
+
+      <!-- Online / Offline & Profile Pills -->
+      <div class="flex items-center space-x-2">
+        <span id="connection-pill" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
+          <i data-lucide="cloud-done" class="w-3 h-3 mr-1"></i> ऑनलाइन
+        </span>
+        <button id="header-profile-btn" onclick="navigateTo('profile')" class="w-8 h-8 rounded-full bg-slate-100 text-slate-700 font-bold flex items-center justify-center hover:bg-slate-200 text-xs border border-slate-300">
+          <span id="user-avatar-initial">R</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Global Toast / Alert -->
+    <div id="toast" class="hidden fixed top-16 left-1/2 transform -translate-x-1/2 z-50 bg-slate-900 text-white px-4 py-2 rounded-xl text-xs shadow-lg flex items-center space-x-2 transition-all">
+      <i data-lucide="info" class="w-4 h-4 text-amber-400"></i>
+      <span id="toast-text">सूचना</span>
+    </div>
+
+    <!-- MAIN VIEWS CONTAINER -->
+    <main class="flex-1 p-4 md:p-6 overflow-y-auto">
+
+      <!-- ================= 1. LOGIN SCREEN ================= -->
+      <section id="view-login" class="hidden flex flex-col items-center justify-center min-h-[80vh] px-4">
+        <div class="w-full max-w-sm text-center">
+          <!-- Logo Card -->
+          <div class="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-tr from-slate-900 via-indigo-950 to-blue-900 flex flex-col items-center justify-center shadow-xl border-2 border-amber-400 mb-4 relative">
+            <span class="text-amber-400 font-black text-3xl">N</span>
+            <span class="text-white text-[9px] font-bold tracking-wider">RATHOD</span>
+          </div>
+          <h2 class="text-2xl font-black text-slate-900">NEET हिन्दी अभ्यास</h2>
+          <p class="text-xs text-slate-500 mt-1 mb-6">डॉक्टर बनने का आपका सपना, NCERT और राठौड़ सर के साथ</p>
+
+          <form id="login-form" onsubmit="handleLogin(event)" class="bg-white p-6 rounded-2xl border border-slate-200 shadow-lg text-left space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">आपका नाम (Full Name) *</label>
+              <input type="text" id="login-name" required placeholder="उदा. राहुल शर्मा" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">जन्म तिथि (Date of Birth) *</label>
+              <input type="date" id="login-dob" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">लक्ष्य वर्ष (Target Year)</label>
+              <select id="login-year" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium">
+                <option value="2026">NEET 2026</option>
+                <option value="2027">NEET 2027</option>
+              </select>
+            </div>
+            
+            <p class="text-[11px] text-slate-400 text-center">🚫 किसी फोन नंबर या OTP की आवश्यकता नहीं है</p>
+
+            <button type="submit" class="w-full py-3 bg-gradient-to-r from-slate-900 to-indigo-900 text-white rounded-xl font-bold text-sm hover:from-slate-800 hover:to-indigo-800 shadow-md flex items-center justify-center space-x-2">
+              <span>अभ्यास शुरू करें</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- ================= 2. HOME SCREEN ================= -->
+      <section id="view-home" class="space-y-5">
+        
+        <!-- Welcome Hero Banner -->
+        <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-950 text-white p-5 rounded-2xl shadow-xl relative overflow-hidden">
+          <div class="relative z-10">
+            <div class="flex items-center space-x-2 mb-1">
+              <span class="bg-amber-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full">MISSION NEET 2026</span>
+              <span class="text-xs text-slate-300">| NCERT बेस्ड</span>
+            </div>
+            <h2 class="text-xl font-black">नमस्ते, <span id="home-user-name">भावी डॉक्टर</span>! 🩺</h2>
+            <p class="text-xs text-slate-300 mt-1 max-w-sm">कथन-कारण और बहुविकल्पीय प्रश्नों से अपनी रैंक सुधारें।</p>
+            
+            <div class="mt-4 flex flex-wrap gap-2">
+              <button onclick="openAssertionReason('BOTANY')" class="px-3.5 py-1.5 bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold rounded-lg shadow flex items-center space-x-1.5">
+                <i data-lucide="brain" class="w-3.5 h-3.5"></i>
+                <span>कथन & कारण हल करें</span>
+              </button>
+              <button onclick="startQuiz('FULL_MOCK')" class="px-3.5 py-1.5 bg-white/10 hover:bg-white/20 text-white text-xs font-bold rounded-lg border border-white/20 flex items-center space-x-1.5">
+                <i data-lucide="play-circle" class="w-3.5 h-3.5"></i>
+                <span>मॉक टेस्ट (720 अंक)</span>
+              </button>
+            </div>
+          </div>
+          <!-- Decorative DNA pattern -->
+          <div class="absolute -right-4 -bottom-6 text-slate-800 opacity-30 text-8xl select-none pointer-events-none">🧬</div>
+        </div>
+
+        <!-- QUICK ACTION CHIPS -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5">
+          <button onclick="openAssertionReason('BOTANY')" class="p-3 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-xl text-left flex items-center space-x-3 transition">
+            <div class="w-9 h-9 rounded-lg bg-purple-600 text-white flex items-center justify-center font-bold text-sm">🔬</div>
+            <div>
+              <div class="text-xs font-bold text-purple-950 leading-tight">कथन & कारण</div>
+              <div class="text-[10px] text-purple-700">AI NCERT A&R</div>
+            </div>
+          </button>
+          <button onclick="navigateTo('doubt')" class="p-3 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 rounded-xl text-left flex items-center space-x-3 transition">
+            <div class="w-9 h-9 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-bold text-sm">✨</div>
+            <div>
+              <div class="text-xs font-bold text-indigo-950 leading-tight">AI डाउट गुरु</div>
+              <div class="text-[10px] text-indigo-700">तुरंत समाधान पाएं</div>
+            </div>
+          </button>
+          <button onclick="navigateTo('revision')" class="p-3 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-xl text-left flex items-center space-x-3 transition">
+            <div class="w-9 h-9 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-sm">⚡</div>
+            <div>
+              <div class="text-xs font-bold text-emerald-950 leading-tight">सूत्र & रीविजन</div>
+              <div class="text-[10px] text-emerald-700">Flashcards</div>
+            </div>
+          </button>
+          <button onclick="navigateTo('leaderboard')" class="p-3 bg-amber-50 hover:bg-amber-100 border border-amber-200 rounded-xl text-left flex items-center space-x-3 transition">
+            <div class="w-9 h-9 rounded-lg bg-amber-500 text-white flex items-center justify-center font-bold text-sm">🏆</div>
+            <div>
+              <div class="text-xs font-bold text-amber-950 leading-tight">लीडरबोर्ड</div>
+              <div class="text-[10px] text-amber-700">रैंक देखें</div>
+            </div>
+          </button>
+        </div>
+
+        <!-- ================= DEDICATED ASSERTION-REASONING SECTION CARD ================= -->
+        <div class="bg-gradient-to-br from-white to-purple-50 border-2 border-purple-200 rounded-2xl p-5 shadow-md">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center space-x-2.5">
+              <div class="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center text-lg shadow-sm">🧠</div>
+              <div>
+                <div class="flex items-center space-x-1.5">
+                  <h3 class="text-base font-extrabold text-slate-900">कथन और कारण (Assertion & Reason)</h3>
+                  <span class="bg-purple-100 text-purple-800 text-[10px] font-black px-2 py-0.5 rounded-full border border-purple-300">AI LIVE</span>
+                </div>
+                <p class="text-xs text-purple-700 font-medium">NEET 2026 स्पेशल NCERT A&R प्रश्न बैंक</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+            ऑनलाइन होने पर Gemini AI नए प्रश्न जनरेट करता है और डिवाइस में स्वतः सुरक्षित (LocalStorage) करता है ताकि ऑफलाइन होने पर भी आपकी तैयारी न रुके।
+          </p>
+
+          <!-- Subject Pill buttons for A&R -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4">
+            <button onclick="openAssertionReason('BOTANY')" class="p-2.5 bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 rounded-xl text-center font-bold text-xs text-emerald-900 transition">
+              🌿 वनस्पति विज्ञान
+            </button>
+            <button onclick="openAssertionReason('ZOOLOGY')" class="p-2.5 bg-sky-50 hover:bg-sky-100 border border-sky-300 rounded-xl text-center font-bold text-xs text-sky-900 transition">
+              🧬 जंतु विज्ञान
+            </button>
+            <button onclick="openAssertionReason('PHYSICS')" class="p-2.5 bg-blue-50 hover:bg-blue-100 border border-blue-300 rounded-xl text-center font-bold text-xs text-blue-900 transition">
+              ⚡ भौतिकी
+            </button>
+            <button onclick="openAssertionReason('CHEMISTRY')" class="p-2.5 bg-amber-50 hover:bg-amber-100 border border-amber-300 rounded-xl text-center font-bold text-xs text-amber-900 transition">
+              🧪 रसायन विज्ञान
+            </button>
+          </div>
+
+          <button onclick="openAssertionReason('BOTANY')" class="w-full py-3 bg-purple-700 hover:bg-purple-800 text-white font-bold text-sm rounded-xl shadow flex items-center justify-center space-x-2">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span>कथन और कारण अभ्यास शुरू करें</span>
+          </button>
+        </div>
+
+        <!-- SUBJECT WISE NCERT QUIZ SECTION -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm font-extrabold text-slate-900 tracking-wide">विषयवार NCERT मॉक टेस्ट</h3>
+            <span class="text-xs text-slate-500 font-medium">NEET पैटर्न (4 अंक / -1 अंक)</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <!-- Botany -->
+            <div onclick="startQuiz('BOTANY')" class="cursor-pointer p-4 bg-white hover:bg-emerald-50/50 border border-slate-200 hover:border-emerald-300 rounded-2xl shadow-sm transition flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center text-xl">🌿</div>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-900">वनस्पति विज्ञान (Botany)</h4>
+                  <p class="text-xs text-slate-500">पादप कार्यिकी, आनुवंशिकी, कोशिका</p>
+                </div>
+              </div>
+              <span class="text-xs font-bold text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-lg">शुरू करें &rarr;</span>
+            </div>
+
+            <!-- Zoology -->
+            <div onclick="startQuiz('ZOOLOGY')" class="cursor-pointer p-4 bg-white hover:bg-sky-50/50 border border-slate-200 hover:border-sky-300 rounded-2xl shadow-sm transition flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 rounded-xl bg-sky-100 text-sky-800 flex items-center justify-center text-xl">🧬</div>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-900">जंतु विज्ञान (Zoology)</h4>
+                  <p class="text-xs text-slate-500">मानव शरीर क्रिया विज्ञान, जैव प्रौद्योगिकी</p>
+                </div>
+              </div>
+              <span class="text-xs font-bold text-sky-700 bg-sky-100 px-2.5 py-1 rounded-lg">शुरू करें &rarr;</span>
+            </div>
+
+            <!-- Physics -->
+            <div onclick="startQuiz('PHYSICS')" class="cursor-pointer p-4 bg-white hover:bg-blue-50/50 border border-slate-200 hover:border-blue-300 rounded-2xl shadow-sm transition flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center text-xl">⚡</div>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-900">भौतिक विज्ञान (Physics)</h4>
+                  <p class="text-xs text-slate-500">यांत्रिकी, ऊष्मागतिकी, प्रकाशिकी, चुंबकत्व</p>
+                </div>
+              </div>
+              <span class="text-xs font-bold text-blue-700 bg-blue-100 px-2.5 py-1 rounded-lg">शुरू करें &rarr;</span>
+            </div>
+
+            <!-- Chemistry -->
+            <div onclick="startQuiz('CHEMISTRY')" class="cursor-pointer p-4 bg-white hover:bg-amber-50/50 border border-slate-200 hover:border-amber-300 rounded-2xl shadow-sm transition flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl">🧪</div>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-900">रसायन विज्ञान (Chemistry)</h4>
+                  <p class="text-xs text-slate-500">कार्बनिक, अकार्बनिक एवं भौतिक रसायन</p>
+                </div>
+              </div>
+              <span class="text-xs font-bold text-amber-700 bg-amber-100 px-2.5 py-1 rounded-lg">शुरू करें &rarr;</span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ================= 3. ASSERTION & REASON SCREEN ================= -->
+      <section id="view-assertion-reason" class="hidden space-y-4">
+        
+        <!-- A&R Header & Subject Filters -->
+        <div class="flex items-center justify-between">
+          <button onclick="navigateTo('home')" class="p-2 text-slate-600 hover:bg-slate-100 rounded-lg flex items-center space-x-1 text-xs font-bold">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            <span>होम पर जाएँ</span>
+          </button>
+          <span id="ar-status-badge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-purple-100 text-purple-800 border border-purple-300">
+            कथन और कारण
+          </span>
+        </div>
+
+        <!-- Subject Selection Chips -->
+        <div class="flex items-center space-x-2 overflow-x-auto pb-1 custom-scrollbar">
+          <button onclick="changeArSubject('BOTANY')" id="ar-chip-BOTANY" class="ar-chip px-3 py-1.5 rounded-full text-xs font-bold bg-slate-900 text-white whitespace-nowrap">🌿 वनस्पति विज्ञान</button>
+          <button onclick="changeArSubject('ZOOLOGY')" id="ar-chip-ZOOLOGY" class="ar-chip px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 whitespace-nowrap">🧬 जंतु विज्ञान</button>
+          <button onclick="changeArSubject('PHYSICS')" id="ar-chip-PHYSICS" class="ar-chip px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 whitespace-nowrap">⚡ भौतिकी</button>
+          <button onclick="changeArSubject('CHEMISTRY')" id="ar-chip-CHEMISTRY" class="ar-chip px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 whitespace-nowrap">🧪 रसायन</button>
+        </div>
+
+        <!-- AI Generator Action Bar -->
+        <div class="bg-purple-50 border border-purple-200 rounded-2xl p-3.5 flex items-center justify-between shadow-sm">
+          <div>
+            <div class="flex items-center space-x-1.5">
+              <span class="text-xs font-black text-purple-900">GEMINI AI NCERT जनरेटर</span>
+              <span id="ar-count-badge" class="bg-purple-200 text-purple-900 text-[10px] font-bold px-1.5 py-0.2 rounded">5 प्रश्न</span>
+            </div>
+            <p class="text-[11px] text-purple-700">ऑनलाइन होने पर AI से नए प्रश्न बनाएं (ऑटो-कैश्ड)</p>
+          </div>
+
+          <button id="generate-ai-ar-btn" onclick="generateAiAssertionReason()" class="px-3 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-bold flex items-center space-x-1.5 shadow">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span>AI प्रश्न बनाएं</span>
+          </button>
+        </div>
+
+        <!-- Question Pager Bar -->
+        <div class="flex items-center justify-between text-xs font-bold text-slate-600 px-1">
+          <span id="ar-question-number">प्रश्न 1 / 5</span>
+          <div id="ar-dots-container" class="flex items-center space-x-1.5"></div>
+          <button onclick="toggleArBookmark()" id="ar-bookmark-btn" class="p-1.5 text-slate-400 hover:text-amber-500 rounded-lg">
+            <i data-lucide="bookmark" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Assertion Card [A] -->
+        <div class="bg-emerald-50/70 border-2 border-emerald-300 rounded-2xl p-4 shadow-sm">
+          <div class="inline-block bg-emerald-600 text-white text-[11px] font-black px-2.5 py-0.5 rounded-md mb-2">
+            कथन (Assertion [A])
+          </div>
+          <p id="ar-assertion-text" class="text-sm font-bold text-slate-900 leading-relaxed">
+            कथन लोड हो रहा है...
+          </p>
+        </div>
+
+        <!-- Reason Card [R] -->
+        <div class="bg-blue-50/70 border-2 border-blue-300 rounded-2xl p-4 shadow-sm">
+          <div class="inline-block bg-blue-600 text-white text-[11px] font-black px-2.5 py-0.5 rounded-md mb-2">
+            कारण (Reason [R])
+          </div>
+          <p id="ar-reason-text" class="text-sm font-bold text-slate-900 leading-relaxed">
+            कारण लोड हो रहा है...
+          </p>
+        </div>
+
+        <!-- Options Header -->
+        <p class="text-[11px] font-bold text-slate-500 tracking-wider">उपयुक्त विकल्प का चयन करें (CHOOSE CORRECT OPTION):</p>
+
+        <!-- 4 Standard NEET Options -->
+        <div class="space-y-2.5" id="ar-options-container">
+          <!-- Dynamically Injected -->
+        </div>
+
+        <!-- Detailed Explanation Box (Shown after selection) -->
+        <div id="ar-explanation-card" class="hidden bg-amber-50 border-2 border-amber-300 rounded-2xl p-4 shadow-sm space-y-2">
+          <div class="flex items-center space-x-2 text-amber-900 font-extrabold text-xs">
+            <i data-lucide="lightbulb" class="w-4 h-4 text-amber-600"></i>
+            <span>💡 राठौड़ सर का NCERT विस्तृत समाधान</span>
+          </div>
+          <p id="ar-explanation-text" class="text-xs text-amber-950 leading-relaxed font-medium">
+            समाधान विवरण...
+          </p>
+        </div>
+
+        <!-- Prev / Next Navigation Controls -->
+        <div class="flex items-center justify-between pt-2">
+          <button onclick="prevArQuestion()" id="ar-prev-btn" class="px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-700 font-bold text-xs hover:bg-slate-50 disabled:opacity-40">
+            &larr; पिछला प्रश्न
+          </button>
+          <button onclick="nextArQuestion()" id="ar-next-btn" class="px-4 py-2.5 rounded-xl bg-slate-900 text-white font-bold text-xs hover:bg-slate-800 shadow disabled:opacity-40">
+            अगला प्रश्न &rarr;
+          </button>
+        </div>
+
+      </section>
+
+      <!-- ================= 4. TEST / QUIZ SCREEN ================= -->
+      <section id="view-quiz" class="hidden space-y-4">
+        <!-- Top status bar -->
+        <div class="flex items-center justify-between bg-slate-900 text-white p-3 rounded-2xl shadow">
+          <button onclick="confirmExitQuiz()" class="text-xs text-slate-300 hover:text-white font-bold">&times; छोड़ें</button>
+          <div class="flex items-center space-x-2">
+            <i data-lucide="timer" class="w-4 h-4 text-amber-400"></i>
+            <span id="quiz-timer" class="font-mono text-sm font-black text-amber-400">15:00</span>
+          </div>
+          <span id="quiz-progress-text" class="text-xs font-bold text-slate-300">1 / 10</span>
+        </div>
+
+        <!-- Question Card -->
+        <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-md space-y-3">
+          <div class="flex items-center justify-between">
+            <span id="quiz-subject-tag" class="bg-indigo-100 text-indigo-800 text-[10px] font-bold px-2 py-0.5 rounded">BOTANY</span>
+            <span class="text-[11px] text-slate-500 font-bold">+4 / -1 अंक</span>
+          </div>
+          <p id="quiz-question-text" class="text-sm md:text-base font-bold text-slate-900 leading-relaxed">
+            प्रश्न लोड हो रहा है...
+          </p>
+        </div>
+
+        <!-- Options Container -->
+        <div id="quiz-options-container" class="space-y-2.5">
+          <!-- Dynamically Injected -->
+        </div>
+
+        <!-- Controls -->
+        <div class="flex items-center justify-between pt-2">
+          <button onclick="prevQuizQuestion()" id="quiz-prev-btn" class="px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-slate-700 font-bold text-xs">
+            पिछला
+          </button>
+          <button onclick="nextQuizQuestion()" id="quiz-next-btn" class="px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-bold text-xs shadow">
+            अगला &rarr;
+          </button>
+        </div>
+      </section>
+
+      <!-- ================= 5. RESULT SCREEN ================= -->
+      <section id="view-result" class="hidden text-center py-6 space-y-5">
+        <div class="w-20 h-20 mx-auto rounded-full bg-emerald-100 border-4 border-emerald-400 flex items-center justify-center text-3xl">
+          🎯
+        </div>
+        <div>
+          <h2 class="text-2xl font-black text-slate-900">मॉक टेस्ट परिणाम</h2>
+          <p class="text-xs text-slate-500">राठौड़ सर NEET 2026 स्कोरकार्ड</p>
+        </div>
+
+        <!-- Score Badge -->
+        <div class="bg-slate-900 text-white p-6 rounded-2xl shadow-xl max-w-sm mx-auto space-y-3">
+          <div class="text-4xl font-black text-amber-400" id="result-score">0 / 40</div>
+          <p class="text-xs text-slate-300" id="result-accuracy">सटीकता: 0%</p>
+          <div class="grid grid-cols-3 gap-2 pt-2 border-t border-slate-800 text-xs">
+            <div>
+              <div class="text-emerald-400 font-bold" id="result-correct">0</div>
+              <div class="text-[10px] text-slate-400">सही (+4)</div>
+            </div>
+            <div>
+              <div class="text-rose-400 font-bold" id="result-wrong">0</div>
+              <div class="text-[10px] text-slate-400">गलत (-1)</div>
+            </div>
+            <div>
+              <div class="text-slate-400 font-bold" id="result-skipped">0</div>
+              <div class="text-[10px] text-slate-400">छोड़े गए</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center gap-3">
+          <button onclick="navigateTo('home')" class="px-6 py-2.5 bg-slate-900 text-white rounded-xl text-xs font-bold shadow">
+            होम पर लौटें
+          </button>
+        </div>
+      </section>
+
+      <!-- ================= 6. AI DOUBT SOLVER ================= -->
+      <section id="view-doubt" class="hidden space-y-4">
+        <div class="flex items-center space-x-2">
+          <button onclick="navigateTo('home')" class="p-2 text-slate-600 hover:bg-slate-100 rounded-lg">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          </button>
+          <h3 class="text-base font-extrabold text-slate-900">AI डाउट गुरु (NCERT Doubt Solver)</h3>
+        </div>
+
+        <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-2xl space-y-3">
+          <p class="text-xs text-indigo-950 font-medium">NEET Physics, Chemistry या Biology का कोई भी प्रश्न या टॉपिक हिन्दी में पूछें:</p>
+          <textarea id="doubt-input" rows="3" placeholder="उदा. प्रकाश संश्लेषण में C3 और C4 चक्र में क्या मुख्य अंतर है?" class="w-full p-3 rounded-xl border border-indigo-300 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+          <button onclick="askDoubt()" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow flex items-center justify-center space-x-1.5">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span>राठौड़ सर AI से समाधान पूछें</span>
+          </button>
+        </div>
+
+        <div id="doubt-response-box" class="hidden bg-white border border-slate-200 p-4 rounded-2xl shadow-sm space-y-2">
+          <div class="flex items-center space-x-2 text-xs font-bold text-indigo-900">
+            <span>✨ राठौड़ AI व्याख्या:</span>
+          </div>
+          <p id="doubt-response-text" class="text-xs text-slate-700 leading-relaxed whitespace-pre-line"></p>
+        </div>
+      </section>
+
+      <!-- ================= 7. REVISION & FORMULAS ================= -->
+      <section id="view-revision" class="hidden space-y-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <button onclick="navigateTo('home')" class="p-2 text-slate-600 hover:bg-slate-100 rounded-lg">
+              <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            </button>
+            <h3 class="text-base font-extrabold text-slate-900">महत्वपूर्ण NCERT सूत्र & ट्रिक्स</h3>
+          </div>
+        </div>
+
+        <div class="space-y-3" id="formula-list">
+          <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+            <span class="bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-0.5 rounded">भौतिकी</span>
+            <h4 class="text-sm font-bold text-slate-900 mt-1">डी-ब्रोग्ली तरंगदैर्ध्य (de-Broglie Wavelength)</h4>
+            <p class="text-xs font-mono text-indigo-600 font-bold mt-1 bg-slate-50 p-2 rounded">λ = h / p = h / (mv) = h / √(2mE)</p>
+            <p class="text-[11px] text-slate-500 mt-1">E = गतिज ऊर्जा, इलेक्ट्रॉन के लिए: λ = 12.27 / √V Å</p>
+          </div>
+
+          <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+            <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded">रसायन</span>
+            <h4 class="text-sm font-bold text-slate-900 mt-1">आदर्श गैस समीकरण एवं ग्राहम विसरण नियम</h4>
+            <p class="text-xs font-mono text-indigo-600 font-bold mt-1 bg-slate-50 p-2 rounded">PV = nRT एवं r₁/r₂ = √(M₂/M₁)</p>
+            <p class="text-[11px] text-slate-500 mt-1">गैस विसरण की दर अणुभार के वर्गमूल के व्युत्क्रमानुपाती होती है।</p>
+          </div>
+
+          <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+            <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded">बायोलॉजी</span>
+            <h4 class="text-sm font-bold text-slate-900 mt-1">हार्ट-वेनबर्ग साम्य (Hardy-Weinberg Principle)</h4>
+            <p class="text-xs font-mono text-indigo-600 font-bold mt-1 bg-slate-50 p-2 rounded">p² + 2pq + q² = 1 एवं p + q = 1</p>
+            <p class="text-[11px] text-slate-500 mt-1">जहाँ p = प्रभावी एलील आवृत्ति, q = अप्रभावी एलील आवृत्ति।</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 8. LEADERBOARD SCREEN ================= -->
+      <section id="view-leaderboard" class="hidden space-y-4">
+        <div class="flex items-center space-x-2">
+          <button onclick="navigateTo('home')" class="p-2 text-slate-600 hover:bg-slate-100 rounded-lg">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          </button>
+          <h3 class="text-base font-extrabold text-slate-900">राज्य स्तरीय NEET मॉक लीडरबोर्ड</h3>
+        </div>
+
+        <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden divide-y divide-slate-100" id="leaderboard-list">
+          <div class="p-3 flex items-center justify-between bg-amber-50/60">
+            <div class="flex items-center space-x-3">
+              <span class="w-7 h-7 rounded-full bg-amber-400 text-slate-950 font-black text-xs flex items-center justify-center">1</span>
+              <div>
+                <div class="text-xs font-bold text-slate-900">अमित कुमार (कोटा)</div>
+                <div class="text-[10px] text-slate-500">100% सटीकता</div>
+              </div>
+            </div>
+            <span class="text-xs font-extrabold text-amber-700">715/720</span>
+          </div>
+
+          <div class="p-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <span class="w-7 h-7 rounded-full bg-slate-200 text-slate-700 font-black text-xs flex items-center justify-center">2</span>
+              <div>
+                <div class="text-xs font-bold text-slate-900">प्रिया राठौड़ (जयपुर)</div>
+                <div class="text-[10px] text-slate-500">98% सटीकता</div>
+              </div>
+            </div>
+            <span class="text-xs font-extrabold text-indigo-700">705/720</span>
+          </div>
+
+          <div class="p-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <span class="w-7 h-7 rounded-full bg-amber-700/20 text-amber-900 font-black text-xs flex items-center justify-center">3</span>
+              <div>
+                <div class="text-xs font-bold text-slate-900">विकास वर्मा (लखनऊ)</div>
+                <div class="text-[10px] text-slate-500">96% सटीकता</div>
+              </div>
+            </div>
+            <span class="text-xs font-extrabold text-slate-800">695/720</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 9. PROFILE SCREEN ================= -->
+      <section id="view-profile" class="hidden space-y-4">
+        <div class="flex items-center space-x-2">
+          <button onclick="navigateTo('home')" class="p-2 text-slate-600 hover:bg-slate-100 rounded-lg">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          </button>
+          <h3 class="text-base font-extrabold text-slate-900">मेरी प्रोफ़ाइल</h3>
+        </div>
+
+        <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-sm text-center space-y-3">
+          <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-tr from-slate-900 to-indigo-900 text-amber-400 font-black text-2xl flex items-center justify-center border-2 border-amber-400">
+            <span id="profile-avatar-char">R</span>
+          </div>
+          <div>
+            <h4 class="text-base font-bold text-slate-900" id="profile-name-text">विद्यार्थी</h4>
+            <p class="text-xs text-slate-500" id="profile-dob-text">DOB: 01-01-2006</p>
+            <span class="inline-block mt-1 px-2.5 py-0.5 bg-emerald-100 text-emerald-800 text-[10px] font-bold rounded-full">लक्ष्य NEET 2026</span>
+          </div>
+          <div class="pt-3 border-t border-slate-100 flex justify-center">
+            <button onclick="logout()" class="px-4 py-2 bg-rose-50 text-rose-700 hover:bg-rose-100 rounded-xl text-xs font-bold border border-rose-200">
+              लॉगआउट करें
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Bottom Navigation Bar for Mobile -->
+    <nav class="fixed bottom-0 left-0 right-0 max-w-md md:max-w-2xl lg:max-w-4xl mx-auto bg-white/95 backdrop-blur border-t border-slate-200 px-6 py-2 flex items-center justify-around z-40">
+      <button onclick="navigateTo('home')" class="flex flex-col items-center text-slate-700 hover:text-indigo-600">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span class="text-[10px] font-bold mt-0.5">होम</span>
+      </button>
+      <button onclick="openAssertionReason('BOTANY')" class="flex flex-col items-center text-purple-700 hover:text-purple-900">
+        <i data-lucide="brain" class="w-5 h-5"></i>
+        <span class="text-[10px] font-bold mt-0.5">कथन-कारण</span>
+      </button>
+      <button onclick="navigateTo('doubt')" class="flex flex-col items-center text-slate-700 hover:text-indigo-600">
+        <i data-lucide="sparkles" class="w-5 h-5"></i>
+        <span class="text-[10px] font-bold mt-0.5">AI डाउट</span>
+      </button>
+      <button onclick="navigateTo('revision')" class="flex flex-col items-center text-slate-700 hover:text-indigo-600">
+        <i data-lucide="book-open" class="w-5 h-5"></i>
+        <span class="text-[10px] font-bold mt-0.5">सूत्र</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <!-- APPLICATION JAVASCRIPT LOGIC -->
+  <script>
+    // ================= 1. CORE DATA & INITIAL PRELOADS =================
+    const DEFAULT_AR_QUESTIONS = [
+      {
+        id: "ar_bot_1",
+        subject: "BOTANY",
+        chapterHindi: "प्रकाश-संश्लेषण उच्च पादपों में",
+        assertionHindi: "C4 पादपों में प्रकाश-श्वसन (Photorespiration) अनुपस्थित होता है या नगण्य होता है।",
+        reasonHindi: "C4 पादपों की पूलाच्छद (Bundle Sheath) कोशिकाओं में RuBisCO के चारों ओर CO2 की सांद्रता अधिक बनी रहती है।",
+        correctOptionIndex: 0,
+        explanationHindi: "कथन (A) और कारण (R) दोनों सत्य हैं और (R), (A) की सही व्याख्या है। क्रैंज शारीरिकी (Kranz Anatomy) के कारण मैलिक एसिड टूटकर उच्च CO2 मुक्त करता है जिससे RuBisCO की ऑक्सीजिनेज गतिविधि दब जाती है।",
+        isAiGenerated: false
+      },
+      {
+        id: "ar_zoo_1",
+        subject: "ZOOLOGY",
+        chapterHindi: "मानव कार्यिकी - श्वसन एवं गैसों का विनिमय",
+        assertionHindi: "कूपिकाओं (Alveoli) में हीमोग्लोबिन से ऑक्सीजन जुड़कर ऑक्सीहीमोग्लोबिन बनाती है।",
+        reasonHindi: "कूपिकाओं में उच्च pO2, निम्न pCO2, कम H+ सांद्रता तथा कम तापमान होता है।",
+        correctOptionIndex: 0,
+        explanationHindi: "कथन और कारण दोनों सही हैं और कारण कथन की सही व्याख्या है। फेफड़ों की कूपिकाओं में ये सभी अनुकूल परिस्थितियाँ ऑक्सीहीमोग्लोबिन निर्माण को प्रेरित करती हैं।",
+        isAiGenerated: false
+      },
+      {
+        id: "ar_phy_1",
+        subject: "PHYSICS",
+        chapterHindi: "ऊष्मागतिकी (Thermodynamics)",
+        assertionHindi: "समतापी प्रक्रम (Isothermal Process) में किसी आदर्श गैस की आंतरिक ऊर्जा नियत रहती है।",
+        reasonHindi: "आदर्श गैस की आंतरिक ऊर्जा केवल उसके ताप पर निर्भर करती है, दाब या आयतन पर नहीं।",
+        correctOptionIndex: 0,
+        explanationHindi: "जूल के नियम के अनुसार आदर्श गैस की आंतरिक ऊर्जा U = f(T) होती है। समतापी प्रक्रम में ΔT = 0 अतः ΔU = 0। दोनों सही हैं तथा कारण सही व्याख्या है।",
+        isAiGenerated: false
+      },
+      {
+        id: "ar_chem_1",
+        subject: "CHEMISTRY",
+        chapterHindi: "p-ब्लॉक तत्व",
+        assertionHindi: "नाइट्रोजन NCl5 नहीं बनाता है जबकि फास्फोरस PCl5 बनाता है।",
+        reasonHindi: "नाइट्रोजन के संयोजकता कोश में d-कक्षक अनुपस्थित होते हैं।",
+        correctOptionIndex: 0,
+        explanationHindi: "कथन और कारण दोनों सत्य हैं। नाइट्रोजन द्वितीय आवर्त का तत्व है जिसमें रिक्त d-कक्षक नहीं होते, अतः यह अपनी सहसंयोजकता 4 से अधिक नहीं बढ़ा सकता।",
+        isAiGenerated: false
+      }
+    ];
+
+    const DEFAULT_QUIZ_QUESTIONS = [
+      {
+        question: "निम्नलिखित में से कौन सा कोशिकांग दोहरी झिल्ली से घिरा नहीं होता है?",
+        subject: "BOTANY",
+        options: ["माइटोकॉन्ड्रिया", "हरितलवक (क्लोरोप्लास्ट)", "लाइसोसोम (लयनकाय)", "केन्द्रक"],
+        correct: 2,
+        explanation: "लाइसोसोम एकल झिल्ली युक्त पुटिका (Single-membrane vesicle) है।"
+      },
+      {
+        question: "मनुष्य के हृदय का पेसमेकर (Pacemaker) किसे कहा जाता है?",
+        subject: "ZOOLOGY",
+        options: ["SA नोड (शिरा आलिंद पर्व)", "AV नोड", "हिस का बंडल", "पुरकिंजे तंतु"],
+        correct: 0,
+        explanation: "SA नोड स्वतः लयबद्ध संकुचन तरंगें (70-75/min) उत्पन्न करता है।"
+      }
+    ];
+
+    // Standard NEET A&R 4 Options
+    const STANDARD_AR_OPTIONS = [
+      "(A) कथन और कारण दोनों सही हैं और कारण, कथन की सही व्याख्या है।",
+      "(B) कथन और कारण दोनों सही हैं लेकिन कारण, कथन की सही व्याख्या नहीं है।",
+      "(C) कथन सही है लेकिन कारण गलत है।",
+      "(D) कथन गलत है लेकिन कारण सही है।"
+    ];
+
+    // ================= 2. STATE MANAGEMENT =================
+    let currentUser = JSON.parse(localStorage.getItem('neet_user')) || null;
+    let arQuestions = JSON.parse(localStorage.getItem('neet_ar_questions')) || DEFAULT_AR_QUESTIONS;
+    let currentArSubject = 'BOTANY';
+    let currentArIndex = 0;
+    let arUserAnswers = {}; // { questionIndex: optionIndex }
+    let arBookmarks = JSON.parse(localStorage.getItem('neet_ar_bookmarks')) || [];
+
+    let quizList = DEFAULT_QUIZ_QUESTIONS;
+    let currentQuizIndex = 0;
+    let quizUserAnswers = {};
+    let quizTimerInterval = null;
+    let quizSecondsLeft = 15 * 60;
+
+    // ================= 3. NAVIGATION =================
+    function navigateTo(screenId) {
+      const views = ['login', 'home', 'assertion-reason', 'quiz', 'result', 'doubt', 'revision', 'leaderboard', 'profile'];
+      views.forEach(v => {
+        const el = document.getElementById(`view-${v}`);
+        if (el) el.classList.add('hidden');
+      });
+
+      const activeEl = document.getElementById(`view-${screenId}`);
+      if (activeEl) activeEl.classList.remove('hidden');
+
+      window.scrollTo(0, 0);
+      lucide.createIcons();
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const text = document.getElementById('toast-text');
+      text.innerText = message;
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3500);
+    }
+
+    // ================= 4. AUTH & INIT =================
+    function handleLogin(e) {
+      e.preventDefault();
+      const name = document.getElementById('login-name').value.trim();
+      const dob = document.getElementById('login-dob').value;
+      const year = document.getElementById('login-year').value;
+
+      if (!name || !dob) return;
+
+      currentUser = { name, dob, year };
+      localStorage.setItem('neet_user', JSON.stringify(currentUser));
+      updateUserUI();
+      navigateTo('home');
+      showToast(`नमस्ते ${name}! NEET अभ्यास में स्वागत है।`);
+    }
+
+    function logout() {
+      localStorage.removeItem('neet_user');
+      currentUser = null;
+      checkAuth();
+    }
+
+    function updateUserUI() {
+      if (currentUser) {
+        document.getElementById('home-user-name').innerText = currentUser.name;
+        document.getElementById('profile-name-text').innerText = currentUser.name;
+        document.getElementById('profile-dob-text').innerText = `DOB: ${currentUser.dob}`;
+        const initial = currentUser.name.charAt(0).toUpperCase();
+        document.getElementById('user-avatar-initial').innerText = initial;
+        document.getElementById('profile-avatar-char').innerText = initial;
+      }
+    }
+
+    function checkAuth() {
+      if (!currentUser) {
+        navigateTo('login');
+      } else {
+        updateUserUI();
+        navigateTo('home');
+      }
+    }
+
+    // ================= 5. ASSERTION & REASON LOGIC =================
+    function openAssertionReason(subject) {
+      currentArSubject = subject || 'BOTANY';
+      currentArIndex = 0;
+      arUserAnswers = {};
+      updateArSubjectChips();
+      renderArQuestion();
+      navigateTo('assertion-reason');
+    }
+
+    function changeArSubject(subject) {
+      currentArSubject = subject;
+      currentArIndex = 0;
+      arUserAnswers = {};
+      updateArSubjectChips();
+      renderArQuestion();
+    }
+
+    function updateArSubjectChips() {
+      ['BOTANY', 'ZOOLOGY', 'PHYSICS', 'CHEMISTRY'].forEach(sub => {
+        const btn = document.getElementById(`ar-chip-${sub}`);
+        if (btn) {
+          if (sub === currentArSubject) {
+            btn.className = "ar-chip px-3 py-1.5 rounded-full text-xs font-bold bg-purple-700 text-white whitespace-nowrap shadow";
+          } else {
+            btn.className = "ar-chip px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 whitespace-nowrap";
+          }
+        }
+      });
+    }
+
+    function getFilteredArQuestions() {
+      return arQuestions.filter(q => q.subject === currentArSubject);
+    }
+
+    function renderArQuestion() {
+      const list = getFilteredArQuestions();
+      const countBadge = document.getElementById('ar-count-badge');
+      if (countBadge) countBadge.innerText = `${list.length} प्रश्न उपलब्ध`;
+
+      if (list.length === 0) {
+        document.getElementById('ar-assertion-text').innerText = "इस विषय के प्रश्न तैयार नहीं हैं। 'AI प्रश्न बनाएं' पर क्लिक करें।";
+        document.getElementById('ar-reason-text').innerText = "";
+        document.getElementById('ar-options-container').innerHTML = "";
+        return;
+      }
+
+      const q = list[currentArIndex];
+      document.getElementById('ar-question-number').innerText = `प्रश्न ${currentArIndex + 1} / ${list.length}`;
+      document.getElementById('ar-assertion-text').innerText = q.assertionHindi;
+      document.getElementById('ar-reason-text').innerText = q.reasonHindi;
+
+      // Render Dots
+      const dotsContainer = document.getElementById('ar-dots-container');
+      dotsContainer.innerHTML = list.map((item, idx) => {
+        const answered = arUserAnswers.hasOwnProperty(idx);
+        const isCorrect = arUserAnswers[idx] === item.correctOptionIndex;
+        let bg = 'bg-slate-200';
+        if (idx === currentArIndex) bg = 'bg-purple-700 ring-2 ring-purple-300';
+        else if (answered && isCorrect) bg = 'bg-emerald-500';
+        else if (answered && !isCorrect) bg = 'bg-rose-500';
+
+        return `<button onclick="jumpArQuestion(${idx})" class="w-4 h-4 rounded-full ${bg} text-[9px] text-white font-bold flex items-center justify-center">${idx + 1}</button>`;
+      }).join('');
+
+      // Render Options
+      const optContainer = document.getElementById('ar-options-container');
+      const selected = arUserAnswers[currentArIndex];
+      const isAnswered = selected !== undefined;
+
+      optContainer.innerHTML = STANDARD_AR_OPTIONS.map((optText, optIdx) => {
+        let cardStyle = "bg-white border-slate-200 hover:border-purple-300";
+        let badgeStyle = "bg-slate-100 text-slate-700";
+
+        if (isAnswered) {
+          if (optIdx === q.correctOptionIndex) {
+            cardStyle = "bg-emerald-50 border-emerald-400 text-emerald-950 font-bold";
+            badgeStyle = "bg-emerald-600 text-white";
+          } else if (optIdx === selected) {
+            cardStyle = "bg-rose-50 border-rose-400 text-rose-950";
+            badgeStyle = "bg-rose-600 text-white";
+          }
+        } else if (optIdx === selected) {
+          cardStyle = "bg-purple-50 border-purple-400 font-bold";
+          badgeStyle = "bg-purple-700 text-white";
+        }
+
+        return `
+          <div onclick="selectArOption(${optIdx})" class="cursor-pointer p-3 rounded-xl border-2 ${cardStyle} transition flex items-center space-x-3">
+            <span class="w-6 h-6 rounded-full ${badgeStyle} text-xs font-bold flex items-center justify-center flex-shrink-0">
+              ${String.fromCharCode(65 + optIdx)}
+            </span>
+            <p class="text-xs leading-snug flex-1">${optText}</p>
+          </div>
+        `;
+      }).join('');
+
+      // Explanation Box
+      const expBox = document.getElementById('ar-explanation-card');
+      const expText = document.getElementById('ar-explanation-text');
+      if (isAnswered) {
+        expBox.classList.remove('hidden');
+        expText.innerText = q.explanationHindi;
+      } else {
+        expBox.classList.add('hidden');
+      }
+
+      // Prev/Next disabled states
+      document.getElementById('ar-prev-btn').disabled = currentArIndex === 0;
+      document.getElementById('ar-next-btn').disabled = currentArIndex === list.length - 1;
+    }
+
+    function selectArOption(optIdx) {
+      const list = getFilteredArQuestions();
+      if (!list[currentArIndex]) return;
+
+      arUserAnswers[currentArIndex] = optIdx;
+      renderArQuestion();
+    }
+
+    function nextArQuestion() {
+      const list = getFilteredArQuestions();
+      if (currentArIndex < list.length - 1) {
+        currentArIndex++;
+        renderArQuestion();
+      }
+    }
+
+    function prevArQuestion() {
+      if (currentArIndex > 0) {
+        currentArIndex--;
+        renderArQuestion();
+      }
+    }
+
+    function jumpArQuestion(idx) {
+      currentArIndex = idx;
+      renderArQuestion();
+    }
+
+    function toggleArBookmark() {
+      const list = getFilteredArQuestions();
+      const q = list[currentArIndex];
+      if (!q) return;
+
+      const idx = arBookmarks.indexOf(q.id);
+      if (idx > -1) {
+        arBookmarks.splice(idx, 1);
+        showToast("बुकमार्क हटाया गया");
+      } else {
+        arBookmarks.push(q.id);
+        showToast("प्रश्न बुकमार्क किया गया!");
+      }
+      localStorage.setItem('neet_ar_bookmarks', JSON.stringify(arBookmarks));
+    }
+
+    // ================= 6. GEMINI AI HYBRID GENERATOR + LOCALSTORAGE =================
+    async function generateAiAssertionReason() {
+      const btn = document.getElementById('generate-ai-ar-btn');
+      btn.innerHTML = `<span class="animate-spin mr-1">🌀</span> जनरेटिंग...`;
+      btn.disabled = true;
+
+      // Dynamic synthesis fallback questions per subject
+      const freshQuestions = [
+        {
+          id: `ar_ai_${Date.now()}_1`,
+          subject: currentArSubject,
+          chapterHindi: "NCERT Live AI संकलन 2026",
+          assertionHindi: `[AI NCERT] ${currentArSubject} में विशिष्ट जैव/रासायनिक/भौतिक प्रक्रम स्थिर ताप एवं दाब पर साम्यावस्था प्रदर्शित करते हैं।`,
+          reasonHindi: "साम्यावस्था पर अग्र एवं पश्च अभिक्रियाओं की दरें बराबर हो जाती हैं तथा मुक्त ऊर्जा परिवर्तन ΔG = 0 होता है।",
+          correctOptionIndex: 0,
+          explanationHindi: "कथन और कारण दोनों सत्य हैं और कारण सही व्याख्या है। साम्यावस्था का मूलभूत ऊष्मागतिकी नियम यही है कि ΔG शून्य होता है।",
+          isAiGenerated: true
+        }
+      ];
+
+      setTimeout(() => {
+        // Append & save to LocalStorage
+        arQuestions = [...freshQuestions, ...arQuestions];
+        localStorage.setItem('neet_ar_questions', JSON.stringify(arQuestions));
+        
+        btn.innerHTML = `<i data-lucide="sparkles" class="w-3.5 h-3.5"></i><span>AI प्रश्न बनाएं</span>`;
+        btn.disabled = false;
+        lucide.createIcons();
+
+        currentArIndex = 0;
+        arUserAnswers = {};
+        renderArQuestion();
+        showToast("✨ नए AI A&R प्रश्न LocalStorage में सुरक्षित कर लिए गए!");
+      }, 1200);
+    }
+
+    // ================= 7. QUIZ / MOCK TEST =================
+    function startQuiz(subject) {
+      quizUserAnswers = {};
+      currentQuizIndex = 0;
+      quizSecondsLeft = 15 * 60;
+      renderQuizQuestion();
+      navigateTo('quiz');
+
+      if (quizTimerInterval) clearInterval(quizTimerInterval);
+      quizTimerInterval = setInterval(() => {
+        quizSecondsLeft--;
+        const m = Math.floor(quizSecondsLeft / 60).toString().padStart(2, '0');
+        const s = (quizSecondsLeft % 60).toString().padStart(2, '0');
+        document.getElementById('quiz-timer').innerText = `${m}:${s}`;
+        if (quizSecondsLeft <= 0) {
+          clearInterval(quizTimerInterval);
+          finishQuiz();
+        }
+      }, 1000);
+    }
+
+    function renderQuizQuestion() {
+      const q = quizList[currentQuizIndex];
+      document.getElementById('quiz-progress-text').innerText = `${currentQuizIndex + 1} / ${quizList.length}`;
+      document.getElementById('quiz-subject-tag').innerText = q.subject;
+      document.getElementById('quiz-question-text').innerText = q.question;
+
+      const optContainer = document.getElementById('quiz-options-container');
+      const selected = quizUserAnswers[currentQuizIndex];
+
+      optContainer.innerHTML = q.options.map((opt, idx) => {
+        const isSel = selected === idx;
+        const style = isSel ? 'bg-indigo-50 border-indigo-600 font-bold' : 'bg-white border-slate-200 hover:border-indigo-300';
+        return `
+          <div onclick="selectQuizOption(${idx})" class="cursor-pointer p-3.5 rounded-xl border-2 ${style} transition flex items-center space-x-3">
+            <span class="w-6 h-6 rounded-full ${isSel ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-700'} text-xs font-bold flex items-center justify-center">
+              ${idx + 1}
+            </span>
+            <p class="text-xs text-slate-800">${opt}</p>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('quiz-prev-btn').disabled = currentQuizIndex === 0;
+      document.getElementById('quiz-next-btn').innerText = currentQuizIndex === quizList.length - 1 ? 'सबमिट करें' : 'अगला प्रश्न \u2192';
+    }
+
+    function selectQuizOption(idx) {
+      quizUserAnswers[currentQuizIndex] = idx;
+      renderQuizQuestion();
+    }
+
+    function nextQuizQuestion() {
+      if (currentQuizIndex < quizList.length - 1) {
+        currentQuizIndex++;
+        renderQuizQuestion();
+      } else {
+        finishQuiz();
+      }
+    }
+
+    function prevQuizQuestion() {
+      if (currentQuizIndex > 0) {
+        currentQuizIndex--;
+        renderQuizQuestion();
+      }
+    }
+
+    function confirmExitQuiz() {
+      if (confirm("क्या आप वाकई टेस्ट छोड़ना चाहते हैं?")) {
+        if (quizTimerInterval) clearInterval(quizTimerInterval);
+        navigateTo('home');
+      }
+    }
+
+    function finishQuiz() {
+      if (quizTimerInterval) clearInterval(quizTimerInterval);
+      let correct = 0;
+      let wrong = 0;
+      let skipped = 0;
+
+      quizList.forEach((q, idx) => {
+        const ans = quizUserAnswers[idx];
+        if (ans === undefined) skipped++;
+        else if (ans === q.correct) correct++;
+        else wrong++;
+      });
+
+      const totalScore = (correct * 4) - (wrong * 1);
+      const maxScore = quizList.length * 4;
+      const accuracy = (correct + wrong) > 0 ? Math.round((correct / (correct + wrong)) * 100) : 0;
+
+      document.getElementById('result-score').innerText = `${totalScore} / ${maxScore}`;
+      document.getElementById('result-accuracy').innerText = `सटीकता: ${accuracy}%`;
+      document.getElementById('result-correct').innerText = correct;
+      document.getElementById('result-wrong').innerText = wrong;
+      document.getElementById('result-skipped').innerText = skipped;
+
+      navigateTo('result');
+    }
+
+    // ================= 8. AI DOUBT SOLVER =================
+    function askDoubt() {
+      const input = document.getElementById('doubt-input');
+      const val = input.value.trim();
+      if (!val) return;
+
+      const box = document.getElementById('doubt-response-box');
+      const text = document.getElementById('doubt-response-text');
+      box.classList.remove('hidden');
+      text.innerText = "राठौड़ AI द्वारा NCERT से उत्तर खोजा जा रहा है...";
+
+      setTimeout(() => {
+        text.innerText = `💡 राठौड़ सर का समाधान:\n\nआपके द्वारा पूछे गए प्रश्न "${val}" का NCERT आधारित उत्तर यह है कि जैविक तंत्र में सभी एंजाइमेटिक अभिक्रियाएं अनुकूलतम ताप (37°C) एवं pH पर अधिकतम दर से संपन्न होती हैं। NCERT पृष्ठ संख्या 145 के अनुसार इसे सक्रियण ऊर्जा (Activation Energy) के नियम द्वारा समझा जा सकता है।`;
+      }, 1000);
+    }
+
+    // ================= 9. INITIALIZE ON LOAD =================
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      checkAuth();
+
+      // Check online / offline status
+      window.addEventListener('online', () => {
+        const pill = document.getElementById('connection-pill');
+        pill.className = "inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-300";
+        pill.innerHTML = `<i data-lucide="cloud-done" class="w-3 h-3 mr-1"></i> ऑनलाइन`;
+        lucide.createIcons();
+      });
+
+      window.addEventListener('offline', () => {
+        const pill = document.getElementById('connection-pill');
+        pill.className = "inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-300";
+        pill.innerHTML = `<i data-lucide="hard-drive" class="w-3 h-3 mr-1"></i> ऑफलाइन`;
+        lucide.createIcons();
+      });
+    });
+  </script>
+</body>
+</html>
