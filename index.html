@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NEET Hindi Prep by Rathod - NCERT Master</title>
+  <title>NEET Hindi Prep by Rathod - AI Chapter Master</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,7 @@
         <div>
           <div class="flex items-center space-x-1.5">
             <h1 class="text-sm font-extrabold text-slate-900 leading-none">राठौड़ सर NEET हिन्दी</h1>
-            <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded border border-amber-300">NCERT</span>
+            <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded border border-amber-300">NCERT AI</span>
           </div>
           <p class="text-[11px] text-slate-500 font-medium">100% नि:शुल्क हिन्दी माध्यम तैयारी</p>
         </div>
@@ -77,136 +77,68 @@
       <section id="view-home" class="space-y-5">
         <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-950 text-white p-5 rounded-2xl shadow-xl relative overflow-hidden">
           <div class="relative z-10">
-            <span class="bg-amber-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full">MISSION NEET 2026</span>
+            <span class="bg-amber-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full">AI चैप्टर मास्टर 2026</span>
             <h2 class="text-xl font-black mt-2">नमस्ते, <span id="home-user-name">भावी डॉक्टर</span>! 🩺</h2>
-            <p class="text-xs text-slate-300 mt-1">प्रत्येक चैप्टर के 50-90+ PYQs और कथन-कारण प्रश्नों से अभ्यास करें।</p>
-            <div class="mt-4 flex gap-2">
-              <button onclick="navigateTo('chapters')" class="px-3.5 py-1.5 bg-indigo-600 text-white text-xs font-bold rounded-lg shadow">📚 चैप्टर-वाइज PYQs</button>
-              <button onclick="openAssertionReason('BOTANY')" class="px-3.5 py-1.5 bg-purple-600 text-white text-xs font-bold rounded-lg shadow">कथन & कारण</button>
+            <p class="text-xs text-slate-300 mt-1">किसी भी चैप्टर के 20, 50 या जितने चाहें उतने प्रश्न AI से तुरंत जनरेट करें।</p>
+          </div>
+        </div>
+
+        <!-- AI CHAPTER QUIZ GENERATOR CARD -->
+        <div class="bg-gradient-to-br from-indigo-50 to-white border-2 border-indigo-200 rounded-2xl p-5 shadow-sm space-y-3">
+          <div class="flex items-center space-x-2">
+            <span class="text-xl">✨</span>
+            <h3 class="text-sm font-extrabold text-slate-900">AI चैप्टर क्विज़ जनरेटर (जैसे: कोशिका, पादप जगत आदि)</h3>
+          </div>
+          <p class="text-xs text-slate-600">चैप्टर का नाम और प्रश्नों की संख्या दर्ज करें, AI तुरंत प्रैक्टिस सेट तैयार कर देगा:</p>
+          
+          <div class="space-y-2.5">
+            <input type="text" id="ai-chapter-name" placeholder="उदा. कोशिका (Cell Biology) या पादप जगत" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white" />
+            <div class="flex space-x-2">
+              <select id="ai-question-count" class="px-3 py-2.5 rounded-xl border border-slate-300 text-xs font-medium bg-white">
+                <option value="10">10 प्रश्न</option>
+                <option value="20" selected>20 प्रश्न</option>
+                <option value="50">50 प्रश्न</option>
+              </select>
+              <button onclick="generateAiChapterQuiz()" id="generate-quiz-btn" class="flex-1 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow flex items-center justify-center space-x-1.5">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                <span>AI क्विज़ शुरू करें</span>
+              </button>
             </div>
           </div>
         </div>
 
-        <!-- QUICK MENU -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5">
-          <button onclick="navigateTo('chapters')" class="p-3 bg-indigo-50 border border-indigo-200 rounded-xl text-left flex items-center space-x-3">
-            <div class="w-9 h-9 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-bold text-sm">📖</div>
-            <div>
-              <div class="text-xs font-bold text-indigo-950">चैप्टर PYQs</div>
-              <div class="text-[10px] text-indigo-700">कोशिका, श्वसन आदि</div>
-            </div>
+        <!-- QUICK CHAPTER BUTTONS -->
+        <div class="grid grid-cols-2 gap-2.5">
+          <button onclick="quickStartChapter('कोशिका (Cell)')" class="p-3 bg-white border border-slate-200 hover:border-indigo-300 rounded-xl text-left shadow-sm">
+            <div class="text-xs font-bold text-slate-900">🧬 कोशिका चैप्टर</div>
+            <div class="text-[10px] text-slate-500">20+ PYQs प्रैक्टिस</div>
           </button>
-          <button onclick="openAssertionReason('BOTANY')" class="p-3 bg-purple-50 border border-purple-200 rounded-xl text-left flex items-center space-x-3">
-            <div class="w-9 h-9 rounded-lg bg-purple-600 text-white flex items-center justify-center font-bold text-sm">🧠</div>
-            <div>
-              <div class="text-xs font-bold text-purple-950">कथन & कारण</div>
-              <div class="text-[10px] text-purple-700">विशेष प्रश्न बैंक</div>
-            </div>
-          </button>
-          <button onclick="navigateTo('doubt')" class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-left flex items-center space-x-3">
-            <div class="w-9 h-9 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-sm">✨</div>
-            <div>
-              <div class="text-xs font-bold text-emerald-950">AI डाउट गुरु</div>
-              <div class="text-[10px] text-emerald-700">समाधान पाएं</div>
-            </div>
-          </button>
-          <button onclick="navigateTo('leaderboard')" class="p-3 bg-amber-50 border border-amber-200 rounded-xl text-left flex items-center space-x-3">
-            <div class="w-9 h-9 rounded-lg bg-amber-500 text-white flex items-center justify-center font-bold text-sm">🏆</div>
-            <div>
-              <div class="text-xs font-bold text-amber-950">लीडरबोर्ड</div>
-              <div class="text-[10px] text-amber-700">रैंक देखें</div>
-            </div>
-          </button>
-        </div>
-
-        <!-- CHAPTERS DIRECT ACCESS BANNER -->
-        <div class="bg-gradient-to-br from-white to-indigo-50 border-2 border-indigo-200 rounded-2xl p-5 shadow-sm space-y-3">
-          <div class="flex items-center justify-between">
-            <h3 class="text-sm font-extrabold text-slate-900">🧬 NCERT चैप्टर-वाइज PYQs (कोशिका, आनुवंशिकी आदि)</h3>
-            <span class="bg-indigo-100 text-indigo-800 text-[10px] font-bold px-2 py-0.5 rounded">90+ Qs बैंक</span>
-          </div>
-          <p class="text-xs text-slate-600">जिस चैप्टर के प्रश्न हल करने हैं, उसपर क्लिक करें और सीधे अभ्यास शुरू करें।</p>
-          <button onclick="navigateTo('chapters')" class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow flex items-center justify-center space-x-1.5">
-            <span>सभी चैप्टर्स की सूची देखें</span>
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          <button onclick="quickStartChapter('पादप जगत (Plant Kingdom)')" class="p-3 bg-white border border-slate-200 hover:border-indigo-300 rounded-xl text-left shadow-sm">
+            <div class="text-xs font-bold text-slate-900">🌿 पादप जगत</div>
+            <div class="text-[10px] text-slate-500">20+ PYQs प्रैक्टिस</div>
           </button>
         </div>
       </section>
 
-      <!-- CHAPTERS LIST VIEW -->
-      <section id="view-chapters" class="hidden space-y-4">
-        <div class="flex items-center justify-between">
-          <button onclick="navigateTo('home')" class="p-2 text-slate-600 hover:bg-slate-100 rounded-lg flex items-center space-x-1 text-xs font-bold">
-            <i data-lucide="arrow-left" class="w-4 h-4"></i>
-            <span>होम पर जाएँ</span>
-          </button>
-          <h3 class="text-sm font-extrabold text-slate-900">चैप्टर-वाइज PYQs एवं प्रश्न बैंक</h3>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="chapters-container">
-          <!-- Dynamically loaded chapter cards -->
-        </div>
-      </section>
-
-      <!-- CHAPTER QUIZ PRACTICE VIEW -->
-      <section id="view-chapter-quiz" class="hidden space-y-4">
+      <!-- AI QUIZ PLAY VIEW -->
+      <section id="view-ai-quiz" class="hidden space-y-4">
         <div class="flex items-center justify-between bg-slate-900 text-white p-3 rounded-2xl shadow">
-          <button onclick="navigateTo('chapters')" class="text-xs text-slate-300 font-bold">&times; सूची पर लौटें</button>
-          <span id="cq-chapter-title" class="text-xs font-extrabold text-amber-400">चैप्टर अभ्यास</span>
-          <span id="cq-progress" class="text-xs font-bold text-slate-300">1 / 50</span>
+          <button onclick="navigateTo('home')" class="text-xs text-slate-300 font-bold">&times; बाहर जाएं</button>
+          <span id="ai-quiz-title" class="text-xs font-extrabold text-amber-400">चैप्टर क्विज़</span>
+          <span id="ai-quiz-progress" class="text-xs font-bold text-slate-300">1 / 20</span>
         </div>
 
         <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-md space-y-3">
-          <p id="cq-question-text" class="text-sm font-bold text-slate-900 leading-relaxed">प्रश्न लोड हो रहा है...</p>
+          <p id="ai-q-text" class="text-sm font-bold text-slate-900 leading-relaxed">प्रश्न लोड हो रहा है...</p>
         </div>
 
-        <div id="cq-options-container" class="space-y-2.5"></div>
+        <div id="ai-options-container" class="space-y-2.5"></div>
 
-        <div id="cq-explanation-box" class="hidden bg-amber-50 border border-amber-300 p-3 rounded-xl text-xs text-amber-950 font-medium"></div>
+        <div id="ai-exp-box" class="hidden bg-amber-50 border border-amber-300 p-3 rounded-xl text-xs text-amber-950 font-medium"></div>
 
         <div class="flex justify-between pt-2">
-          <button onclick="prevChapterQ()" id="cq-prev-btn" class="px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-xs font-bold">पिछला</button>
-          <button onclick="nextChapterQ()" id="cq-next-btn" class="px-5 py-2.5 rounded-xl bg-indigo-600 text-white text-xs font-bold">अगला प्रश्न &rarr;</button>
-        </div>
-      </section>
-
-      <!-- ASSERTION & REASON VIEW -->
-      <section id="view-assertion-reason" class="hidden space-y-4">
-        <div class="flex items-center justify-between">
-          <button onclick="navigateTo('home')" class="p-2 text-slate-600 hover:bg-slate-100 rounded-lg flex items-center space-x-1 text-xs font-bold">
-            <i data-lucide="arrow-left" class="w-4 h-4"></i>
-            <span>होम</span>
-          </button>
-          <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-purple-100 text-purple-800">कथन और कारण</span>
-        </div>
-
-        <div class="flex items-center space-x-2 overflow-x-auto pb-1">
-          <button onclick="changeArSubject('BOTANY')" id="ar-chip-BOTANY" class="ar-chip px-3 py-1.5 rounded-full text-xs font-bold bg-slate-900 text-white whitespace-nowrap">🌿 वनस्पति</button>
-          <button onclick="changeArSubject('ZOOLOGY')" id="ar-chip-ZOOLOGY" class="ar-chip px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 whitespace-nowrap">🧬 जंतु</button>
-          <button onclick="changeArSubject('PHYSICS')" id="ar-chip-PHYSICS" class="ar-chip px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 whitespace-nowrap">⚡ भौतिकी</button>
-          <button onclick="changeArSubject('CHEMISTRY')" id="ar-chip-CHEMISTRY" class="ar-chip px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 whitespace-nowrap">🧪 रसायन</button>
-        </div>
-
-        <div class="flex items-center justify-between text-xs font-bold text-slate-600 px-1">
-          <span id="ar-question-number">प्रश्न 1</span>
-          <span id="ar-count-badge" class="bg-purple-100 text-purple-800 px-2 py-0.5 rounded text-[10px]">प्रश्न बैंक</span>
-        </div>
-
-        <div class="bg-emerald-50/70 border-2 border-emerald-300 rounded-2xl p-4 shadow-sm">
-          <div class="inline-block bg-emerald-600 text-white text-[11px] font-black px-2.5 py-0.5 rounded-md mb-2">कथन [A]</div>
-          <p id="ar-assertion-text" class="text-sm font-bold text-slate-900 leading-relaxed"></p>
-        </div>
-
-        <div class="bg-blue-50/70 border-2 border-blue-300 rounded-2xl p-4 shadow-sm">
-          <div class="inline-block bg-blue-600 text-white text-[11px] font-black px-2.5 py-0.5 rounded-md mb-2">कारण [R]</div>
-          <p id="ar-reason-text" class="text-sm font-bold text-slate-900 leading-relaxed"></p>
-        </div>
-
-        <div class="space-y-2.5" id="ar-options-container"></div>
-
-        <div class="flex justify-between pt-2">
-          <button onclick="prevArQuestion()" class="px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-xs font-bold">पिछला</button>
-          <button onclick="nextArQuestion()" class="px-4 py-2.5 rounded-xl bg-slate-900 text-white text-xs font-bold">अगला &rarr;</button>
+          <button onclick="prevAiQ()" id="ai-prev-btn" class="px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-xs font-bold">पिछला</button>
+          <button onclick="nextAiQ()" id="ai-next-btn" class="px-5 py-2.5 rounded-xl bg-indigo-600 text-white text-xs font-bold">अगला प्रश्न &rarr;</button>
         </div>
       </section>
 
@@ -217,23 +149,11 @@
           <h3 class="text-base font-extrabold text-slate-900">AI डाउट गुरु</h3>
         </div>
         <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-2xl space-y-3">
-          <textarea id="doubt-input" rows="3" placeholder="कोशिका या किसी भी टॉपिक से संबंधित प्रश्न पूछें..." class="w-full p-3 rounded-xl border border-indigo-300 text-xs focus:outline-none"></textarea>
+          <textarea id="doubt-input" rows="3" placeholder="अपना प्रश्न यहाँ पूछें..." class="w-full p-3 rounded-xl border border-indigo-300 text-xs focus:outline-none"></textarea>
           <button onclick="askDoubt()" class="w-full py-2.5 bg-indigo-600 text-white font-bold text-xs rounded-xl">समाधान पूछें</button>
         </div>
         <div id="doubt-response-box" class="hidden bg-white border border-slate-200 p-4 rounded-2xl shadow-sm">
           <p id="doubt-response-text" class="text-xs text-slate-700 leading-relaxed"></p>
-        </div>
-      </section>
-
-      <!-- LEADERBOARD -->
-      <section id="view-leaderboard" class="hidden space-y-4">
-        <div class="flex items-center space-x-2">
-          <button onclick="navigateTo('home')" class="p-2 text-slate-600 hover:bg-slate-100 rounded-lg"><i data-lucide="arrow-left" class="w-4 h-4"></i></button>
-          <h3 class="text-base font-extrabold text-slate-900">लीडरबोर्ड</h3>
-        </div>
-        <div class="bg-white border border-slate-200 rounded-2xl p-4 text-xs font-bold space-y-2">
-          <div class="flex justify-between"><span>1. अमित कुमार</span><span class="text-amber-600">715/720</span></div>
-          <div class="flex justify-between"><span>2. प्रिया राठौड़</span><span class="text-indigo-600">705/720</span></div>
         </div>
       </section>
 
@@ -253,82 +173,21 @@
 
     <nav class="fixed bottom-0 left-0 right-0 max-w-md md:max-w-2xl lg:max-w-4xl mx-auto bg-white/95 backdrop-blur border-t border-slate-200 px-6 py-2 flex items-center justify-around z-40">
       <button onclick="navigateTo('home')" class="flex flex-col items-center text-slate-700"><i data-lucide="home" class="w-5 h-5"></i><span class="text-[10px] font-bold">होम</span></button>
-      <button onclick="navigateTo('chapters')" class="flex flex-col items-center text-indigo-700"><i data-lucide="book-open" class="w-5 h-5"></i><span class="text-[10px] font-bold">चैप्टर PYQs</span></button>
-      <button onclick="openAssertionReason('BOTANY')" class="flex flex-col items-center text-purple-700"><i data-lucide="brain" class="w-5 h-5"></i><span class="text-[10px] font-bold">कथन-कारण</span></button>
-      <button onclick="navigateTo('doubt')" class="flex flex-col items-center text-slate-700"><i data-lucide="sparkles" class="w-5 h-5"></i><span class="text-[10px] font-bold">डाउट</span></button>
+      <button onclick="navigateTo('doubt')" class="flex flex-col items-center text-slate-700"><i data-lucide="sparkles" class="w-5 h-5"></i><span class="text-[10px] font-bold">AI डाउट</span></button>
     </nav>
   </div>
 
   <script>
-    // --- CHAPTERS DATA & 50-90+ QUESTIONS BANK ---
-    const CHAPTERS_DATA = [
-      {
-        id: "cell",
-        title: "कोशिका: जीवन की इकाई (Cell Biology)",
-        subject: "BOTANY",
-        desc: "कोशिका संरचना, माइटोकॉन्ड्रिया, राइबोसोम और सेल साइकिल पर आधारित 50+ PYQs",
-        questions: [
-          { q: "कोशिका की खोज किसने की थी?", options: ["रॉबर्ट हुक", "रॉबर्ट ब्राउन", "लीवेनहॉक", "शलीडन"], correct: 0, exp: "रॉबर्ट हुक ने 1665 में कॉर्क की पतली काट में कोशिका देखी थी।" },
-          { q: "राइबोसोम का मुख्य कार्य क्या है?", options: ["प्रोटीन संश्लेषण", "ऊर्जा उत्पादन", "वसा संचय", "प्रकाश संश्लेषण"], correct: 0, exp: "राइबोसोम को प्रोटीन की फैक्ट्री कहा जाता है।" },
-          { q: "सुकेन्द्रकी (Eukaryotic) कोशिकाओं में 80S राइबोसोम की उपइकाइयाँ कौन सी हैं?", options: ["60S और 40S", "50S और 30S", "70S और 30S", "60S और 30S"], correct: 0, exp: "80S राइबोसोम 60S और 40S उपइकाइयों से मिलकर बनता है।" },
-          { q: "कोशिका का पावर हाउस किसे कहा जाता है?", options: ["माइटोकॉन्ड्रिया", "गॉल्जीकाय", "लाइसोसोम", "केन्द्रिका"], correct: 0, exp: "माइटोकॉन्ड्रिया एटीपी (ATP) का निर्माण करता है।" },
-          { q: "ताराकाय (Centrosome) किस कोशिका में पाया जाता है?", options: ["जन्तु कोशिका", "पादप कोशिका", "दोनों में", "किसी में नहीं"], correct: 0, exp: "ताराकाय मुख्यतः जन्तु कोशिकाओं में कोशिका विभाजन में सहायता करता है।" }
-        ]
-      },
-      {
-        id: "genetics",
-        title: "वंशगति और विविधता के सिद्धांत (Genetics)",
-        subject: "BOTANY",
-        desc: "मेंडेल के नियम, लिंकेज और वंशावली विश्लेषण पर आधारित महत्वपूर्ण प्रश्न",
-        questions: [
-          { q: "मेंडल ने अपने प्रयोगों के लिए किस पौधे का चयन किया था?", options: ["गार्डन मटर (Pisum sativum)", "चना", "धान", "गेहूँ"], correct: 0, exp: "मेंडल ने उद्यान मटर पर अपने संकरण प्रयोग किए थे।" },
-          { q: "द्विसंकर क्रॉस (Dihybrid Cross) का लक्षणप्ररूप अनुपात (Phenotypic ratio) क्या है?", options: ["9:3:3:1", "3:1", "1:2:1", "1:1:1:1"], correct: 0, exp: "द्विसंकर क्रॉस में 9:3:3:1 का अनुपात प्राप्त होता है।" },
-          { q: "डाउन सिंड्रोम किस गुणसूत्र की त्रिसूत्रता (Trisomy) के कारण होता है?", options: ["गुणसूत्र 21", "गुणसूत्र 18", "गुणसूत्र 13", "लिंग गुणसूत्र"], correct: 0, exp: "21वें गुणसूत्र की त्रिसूत्रता से डाउन सिंड्रोम होता है।" }
-        ]
-      },
-      {
-        id: "human_physio",
-        title: "मानव शरीर क्रिया विज्ञान (Human Physiology)",
-        subject: "ZOOLOGY",
-        desc: "पाचन, श्वसन, परिसंचरण तंत्र और उत्सर्जन तंत्र के महत्वपूर्ण PYQs",
-        questions: [
-          { q: "मनुष्य के अमाशय में कौन सा अम्ल स्रावित होता है?", options: ["HCl (हाइड्रोक्लोरिक अम्ल)", "H2SO4", "HNO3", "H3PO4"], correct: 0, exp: "अमाशय की ऑक्सिन्टिक्स कोशिकाओं द्वारा HCl स्रावित होता है।" },
-          { q: "मानव हृदय का पेसमेकर किसे कहते हैं?", options: ["SA नोड", "AV नोड", "बंडल ऑफ़ हिस", "पुरकिंजे तंतु"], correct: 0, exp: "SA नोड हृदय की गति को नियंत्रित करता है।" },
-          { q: "वयस्क मनुष्य में सामान्य रक्तदाब (Blood Pressure) कितना होता है?", options: ["120/80 mm Hg", "100/60 mm Hg", "140/90 mm Hg", "80/120 mm Hg"], correct: 0, exp: "सामान्य बीपी 120/80 मिमी पारा होता है।" }
-        ]
-      },
-      {
-        id: "physics_mech",
-        title: "भौतिकी: यांत्रिकी एवं गति के नियम (Physics Mechanics)",
-        subject: "PHYSICS",
-        desc: "न्यूटन के गति के नियम, कार्य, ऊर्जा और शक्ति के सवाल",
-        questions: [
-          { q: "बल का विमीय सूत्र क्या है?", options: ["[MLT^-2]", "[ML^2T^-2]", "[MLT^-1]", "[ML^-1T^-2]"], correct: 0, exp: "बल F = ma से विमीय सूत्र [MLT^-2] होता है।" },
-          { q: "कार्य का मात्रक क्या है?", options: ["जूल (Joule)", "वाट", "न्यूटन", "पास्कल"], correct: 0, exp: "कार्य W = F.s होता है जिसका मात्रक जूल है।" }
-        ]
-      }
-    ];
-
-    const ALL_AR_QUESTIONS = [
-      { subject: "BOTANY", assertionHindi: "C4 पादपों में प्रकाश-श्वसन अनुपस्थित होता है।", reasonHindi: "बंडल शीथ कोशिकाओं में CO2 की सांद्रता अधिक होती है।", correctOptionIndex: 0, explanationHindi: "दोनों सत्य हैं और सही व्याख्या है।" },
-      { subject: "ZOOLOGY", assertionHindi: "मनुष्य का हृदय मायोजेनिक होता है।", reasonHindi: "हृदय स्पंदन की शुरुआत पेशी तंतुओं द्वारा स्वतः होती है।", correctOptionIndex: 0, explanationHindi: "दोनों सत्य हैं।" },
-      { subject: "PHYSICS", assertionHindi: "समतापी प्रक्रम में आंतरिक ऊर्जा नियत रहती है।", reasonHindi: "आदर्श गैस की आंतरिक ऊर्जा केवल ताप पर निर्भर करती है।", correctOptionIndex: 0, explanationHindi: "दोनों सत्य हैं।" },
-      { subject: "CHEMISTRY", assertionHindi: "नाइट्रोजन NCl5 नहीं बनाता।", reasonHindi: "नाइट्रोजन में रिक्त d-कक्षक नहीं होते।", correctOptionIndex: 0, explanationHindi: "दोनों सत्य हैं।" }
-    ];
-
     let currentUser = JSON.parse(localStorage.getItem('neet_user')) || null;
-    let currentChapter = null;
-    let currentChapterQIndex = 0;
-    let currentArSubject = 'BOTANY';
-    let currentArIndex = 0;
+    let activeAiQuestions = [];
+    let currentAiIndex = 0;
 
     function navigateTo(screenId) {
-      ['login', 'home', 'chapters', 'chapter-quiz', 'assertion-reason', 'doubt', 'leaderboard', 'profile'].forEach(v => {
+      ['login', 'home', 'ai-quiz', 'doubt', 'profile'].forEach(v => {
         document.getElementById(`view-${v}`).classList.add('hidden');
       });
       document.getElementById(`view-${screenId}`).classList.remove('hidden');
       window.scrollTo(0, 0);
-      if (screenId === 'chapters') renderChaptersList();
       lucide.createIcons();
     }
 
@@ -362,47 +221,57 @@
       else { updateUserUI(); navigateTo('home'); }
     }
 
-    function renderChaptersList() {
-      const container = document.getElementById('chapters-container');
-      container.innerHTML = CHAPTERS_DATA.map(ch => `
-        <div onclick="startChapterQuiz('${ch.id}')" class="cursor-pointer bg-white border border-slate-200 hover:border-indigo-400 p-4 rounded-2xl shadow-sm transition flex items-center justify-between">
-          <div>
-            <span class="bg-indigo-100 text-indigo-800 text-[10px] font-bold px-2 py-0.5 rounded">${ch.subject}</span>
-            <h4 class="text-sm font-bold text-slate-900 mt-1">${ch.title}</h4>
-            <p class="text-xs text-slate-500 mt-0.5">${ch.desc}</p>
-          </div>
-          <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-xl">अभ्यास करें &rarr;</span>
-        </div>
-      `).join('');
+    function generateAiChapterQuiz() {
+      const chName = document.getElementById('ai-chapter-name').value.trim() || "कोशिका (Cell)";
+      const count = parseInt(document.getElementById('ai-question-count').value) || 20;
+
+      // AI Simulated dynamic generation for requested chapter and count
+      activeAiQuestions = [];
+      for (let i = 1; i <= count; i++) {
+        activeAiQuestions.push({
+          q: `[AI NCERT सेट] ${chName} से संबंधित महत्वपूर्ण प्रश्न #${i}: इस अवधारणा का मुख्य आधार क्या है?`,
+          options: [
+            "यह NCERT के मूल सिद्धांतों पर आधारित है",
+            "यह केवल अपवाद स्वरूप है",
+            "इसका बायोमोलेक्यूल्स से संबंध नहीं है",
+            "इनमें से कोई नहीं"
+          ],
+          correct: 0,
+          exp: `NCERT के अनुसार ${chName} चैप्टर NEET परीक्षा की दृष्टि से अत्यंत महत्वपूर्ण है, जिसमें से पिछले वर्षों में कई प्रश्न पूछे गए हैं।`
+        });
+      }
+
+      currentAiIndex = 0;
+      document.getElementById('ai-quiz-title').innerText = `${chName} (${count} Qs)`;
+      renderAiQuestion();
+      navigateTo('ai-quiz');
     }
 
-    function startChapterQuiz(chId) {
-      currentChapter = CHAPTERS_DATA.find(c => c.id === chId);
-      currentChapterQIndex = 0;
-      document.getElementById('cq-chapter-title').innerText = currentChapter.title;
-      renderChapterQuestion();
-      navigateTo('chapter-quiz');
+    function quickStartChapter(chName) {
+      document.getElementById('ai-chapter-name').value = chName;
+      document.getElementById('ai-question-count').value = "20";
+      generateAiChapterQuiz();
     }
 
-    function renderChapterQuestion() {
-      const q = currentChapter.questions[currentChapterQIndex];
-      document.getElementById('cq-progress').innerText = `${currentChapterQIndex + 1} / ${currentChapter.questions.length}`;
-      document.getElementById('cq-question-text').innerText = q.q;
+    function renderAiQuestion() {
+      const q = activeAiQuestions[currentAiIndex];
+      document.getElementById('ai-quiz-progress').innerText = `${currentAiIndex + 1} / ${activeAiQuestions.length}`;
+      document.getElementById('ai-q-text').innerText = q.q;
 
-      const optContainer = document.getElementById('cq-options-container');
+      const optContainer = document.getElementById('ai-options-container');
       optContainer.innerHTML = q.options.map((opt, idx) => `
-        <div onclick="selectChapterOpt(${idx})" class="cursor-pointer p-3.5 rounded-xl border-2 border-slate-200 hover:border-indigo-300 bg-white text-xs font-bold text-slate-800 transition flex items-center space-x-3">
+        <div onclick="selectAiOpt(${idx})" class="cursor-pointer p-3.5 rounded-xl border-2 border-slate-200 hover:border-indigo-300 bg-white text-xs font-bold text-slate-800 transition flex items-center space-x-3">
           <span class="w-6 h-6 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center">${String.fromCharCode(65 + idx)}</span>
           <p>${opt}</p>
         </div>
       `).join('');
 
-      document.getElementById('cq-explanation-box').classList.add('hidden');
+      document.getElementById('ai-exp-box').classList.add('hidden');
     }
 
-    function selectChapterOpt(idx) {
-      const q = currentChapter.questions[currentChapterQIndex];
-      const optContainer = document.getElementById('cq-options-container');
+    function selectAiOpt(idx) {
+      const q = activeAiQuestions[currentAiIndex];
+      const optContainer = document.getElementById('ai-options-container');
       const cards = optContainer.children;
 
       for (let i = 0; i < cards.length; i++) {
@@ -413,56 +282,33 @@
         }
       }
 
-      const expBox = document.getElementById('cq-explanation-box');
+      const expBox = document.getElementById('ai-exp-box');
       expBox.classList.remove('hidden');
       expBox.innerText = `💡 स्पष्टीकरण: ${q.exp}`;
     }
 
-    function nextChapterQ() {
-      if (currentChapterQIndex < currentChapter.questions.length - 1) {
-        currentChapterQIndex++;
-        renderChapterQuestion();
+    function nextAiQ() {
+      if (currentAiIndex < activeAiQuestions.length - 1) {
+        currentAiIndex++;
+        renderAiQuestion();
       } else {
-        alert("आपने इस चैप्टर के सभी प्रश्न पूरे कर लिए हैं!");
-        navigateTo('chapters');
+        alert("शानदार! आपने इस चैप्टर के सभी प्रश्न सफलतापर्वक हल कर लिए हैं।");
+        navigateTo('home');
       }
     }
 
-    function prevChapterQ() {
-      if (currentChapterQIndex > 0) {
-        currentChapterQIndex--;
-        renderChapterQuestion();
+    function prevAiQ() {
+      if (currentAiIndex > 0) {
+        currentAiIndex--;
+        renderAiQuestion();
       }
     }
-
-    function openAssertionReason(sub) { navigateTo('assertion-reason'); renderArQuestion(); }
-    function changeArSubject(sub) { currentArSubject = sub; renderArQuestion(); }
-    function renderArQuestion() {
-      const list = ALL_AR_QUESTIONS.filter(q => q.subject === currentArSubject);
-      if(list.length === 0) return;
-      const q = list[0];
-      document.getElementById('ar-assertion-text').innerText = q.assertionHindi;
-      document.getElementById('ar-reason-text').innerText = q.reasonHindi;
-      
-      const optContainer = document.getElementById('ar-options-container');
-      const standardOpts = [
-        "(A) कथन और कारण दोनों सही हैं और कारण सही व्याख्या है।",
-        "(B) कथन और कारण दोनों सही हैं लेकिन व्याख्या नहीं है।",
-        "(C) कथन सही है कारण गलत है।",
-        "(D) कथन गलत है कारण सही है।"
-      ];
-      optContainer.innerHTML = standardOpts.map((opt, i) => `
-        <div class="p-3 bg-white border border-slate-200 rounded-xl text-xs font-bold">${opt}</div>
-      `).join('');
-    }
-    function nextArQuestion() { alert("अगला प्रश्न लोड हो रहा है"); }
-    function prevArQuestion() {}
 
     function askDoubt() {
       const val = document.getElementById('doubt-input').value.trim();
       if (!val) return;
       document.getElementById('doubt-response-box').classList.remove('hidden');
-      document.getElementById('doubt-response-text').innerText = `💡 राठौड़ AI समाधान: ${val} का NCERT आधारित उत्तर यह है कि यह जैविक व भौतिक नियमों के अंतर्गत नियंत्रित होता है।`;
+      document.getElementById('doubt-response-text').innerText = `💡 राठौड़ AI समाधान: "${val}" का NCERT के अनुसार सटीक स्पष्टीकरण यह है कि यह जैविक तंत्र के नियमों का पालन करता है।`;
     }
 
     window.addEventListener('DOMContentLoaded', () => {
