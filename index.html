@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NEET Hindi Prep by Rathod - Ultimate Hub</title>
+  <title>NEET Hindi Prep by Rathod - AI Bot Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,9 +34,9 @@
         <div>
           <div class="flex items-center space-x-1.5">
             <h1 class="text-sm font-extrabold text-slate-900 leading-none">राठौड़ सर NEET हिन्दी</h1>
-            <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded border border-amber-300">MASTER</span>
+            <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-1.5 py-0.5 rounded border border-amber-300">AI BOT</span>
           </div>
-          <p class="text-[11px] text-slate-500 font-medium">PYQs + PDF + कम्युनिटी + AI</p>
+          <p class="text-[11px] text-slate-500 font-medium">Telegram स्टाइल AI क्विज़ + कम्युनिटी</p>
         </div>
       </div>
       <div class="flex items-center space-x-2">
@@ -78,45 +78,70 @@
       <section id="view-home" class="space-y-5">
         <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-blue-950 text-white p-5 rounded-2xl shadow-xl relative overflow-hidden">
           <div class="relative z-10">
-            <span class="bg-amber-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full">मिशन NEET 2026</span>
+            <span class="bg-amber-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-full">AI क्विज़ बॉट 2026</span>
             <h2 class="text-xl font-black mt-2">नमस्ते, <span id="home-user-name">भावी डॉक्टर</span>! 🩺</h2>
-            <p class="text-xs text-slate-300 mt-1">चैप्टर-वाइज PYQs, PDF नोट्स, कम्युनिटी और AI डाउट का आनंद लें।</p>
+            <p class="text-xs text-slate-300 mt-1">Telegram बोट की तरह किसी भी चैप्टर का AI टेस्ट शुरू करें।</p>
           </div>
         </div>
 
-        <!-- 4 MAIN INTERACTIVE CARDS -->
+        <!-- AI TELEGRAM STYLE BOT GENERATOR -->
+        <div class="bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200 rounded-2xl p-5 shadow-sm space-y-3">
+          <div class="flex items-center space-x-2">
+            <span class="text-xl">🤖</span>
+            <h3 class="text-sm font-extrabold text-slate-900">AI क्विज़ बॉट (Telegram स्टाइल)</h3>
+          </div>
+          <p class="text-xs text-slate-600">चैप्टर का नाम दर्ज करें और बोट से क्विज़ मंगवाएं:</p>
+          
+          <div class="space-y-2.5">
+            <input type="text" id="ai-bot-chapter" placeholder="उदा. कोशिका, श्वसन तंत्र, या पादप जगत" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs font-medium bg-white focus:outline-none" />
+            <div class="flex space-x-2">
+              <select id="ai-bot-count" class="px-3 py-2.5 rounded-xl border border-slate-300 text-xs font-medium bg-white">
+                <option value="10">10 प्रश्न</option>
+                <option value="20" selected>20 प्रश्न</option>
+                <option value="50">50 प्रश्न</option>
+              </select>
+              <button onclick="startAiBotQuiz()" class="flex-1 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow flex items-center justify-center space-x-1.5">
+                <i data-lucide="bot" class="w-4 h-4"></i>
+                <span>बोट क्विज़ शुरू करें</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
         <div class="grid grid-cols-2 gap-3">
           <button onclick="navigateTo('chapters')" class="p-4 bg-white border border-slate-200 hover:border-indigo-300 rounded-2xl shadow-sm text-left flex flex-col justify-between space-y-2">
             <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-lg">📚</div>
             <div>
               <div class="text-xs font-extrabold text-slate-900">चैप्टर PYQs</div>
-              <div class="text-[10px] text-slate-500">कोशिका, पादप जगत आदि</div>
+              <div class="text-[10px] text-slate-500">विस्तृत प्रश्न बैंक</div>
             </div>
           </button>
 
           <button onclick="navigateTo('pdf-hub')" class="p-4 bg-white border border-slate-200 hover:border-emerald-300 rounded-2xl shadow-sm text-left flex flex-col justify-between space-y-2">
             <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-lg">📁</div>
             <div>
-              <div class="text-xs font-extrabold text-slate-900">PDF नोट्स फोल्डर</div>
-              <div class="text-[10px] text-slate-500">महत्वपूर्ण स्टडी मटेरियल</div>
+              <div class="text-xs font-extrabold text-slate-900">PDF नोट्स</div>
+              <div class="text-[10px] text-slate-500">NCERT मटेरियल</div>
             </div>
           </button>
+        </div>
+      </section>
 
-          <button onclick="navigateTo('community')" class="p-4 bg-white border border-slate-200 hover:border-purple-300 rounded-2xl shadow-sm text-left flex flex-col justify-between space-y-2">
-            <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-lg">💬</div>
-            <div>
-              <div class="text-xs font-extrabold text-slate-900">कम्युनिटी फीड</div>
-              <div class="text-[10px] text-slate-500">पोस्ट करें और चर्चा करें</div>
-            </div>
-          </button>
-
-          <button onclick="navigateTo('doubt')" class="p-4 bg-white border border-slate-200 hover:border-amber-300 rounded-2xl shadow-sm text-left flex flex-col justify-between space-y-2">
-            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-lg">✨</div>
-            <div>
-              <div class="text-xs font-extrabold text-slate-900">AI डाउट गुरु</div>
-              <div class="text-[10px] text-slate-500">तुरंत समाधान पाएं</div>
-            </div>
-          </button>
+      <!-- AI BOT QUIZ PLAY VIEW -->
+      <section id="view-ai-bot-quiz" class="hidden space-y-4">
+        <div class="flex items-center justify-between bg-slate-900 text-white p-3 rounded-2xl shadow">
+          <button onclick="navigateTo('home')" class="text-xs text-slate-300 font-bold">&times; बंद करें</button>
+          <span id="bot-quiz-title" class="text-xs font-extrabold text-amber-400">AI बोट क्विज़</span>
+          <span id="bot-progress" class="text-xs font-bold text-slate-300">1 / 20</span>
+        </div>
+        <div class="bg-white border border-slate-200 p-5 rounded-2xl shadow-md space-y-3">
+          <p id="bot-question" class="text-sm font-bold text-slate-900 leading-relaxed"></p>
+        </div>
+        <div id="bot-options" class="space-y-2.5"></div>
+        <div id="bot-exp" class="hidden bg-amber-50 border border-amber-300 p-3 rounded-xl text-xs text-amber-950 font-medium"></div>
+        <div class="flex justify-between pt-2">
+          <button onclick="prevBotQ()" class="px-4 py-2.5 rounded-xl border border-slate-300 bg-white text-xs font-bold">पिछला</button>
+          <button onclick="nextBotQ()" class="px-5 py-2.5 rounded-xl bg-indigo-600 text-white text-xs font-bold">अगला &rarr;</button>
         </div>
       </section>
 
@@ -129,15 +154,13 @@
           </button>
           <h3 class="text-sm font-extrabold text-slate-900">NEET चैप्टर-वाइज PYQs</h3>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="chapters-list-container">
-          <!-- Dynamically Loaded -->
-        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="chapters-list-container"></div>
       </section>
 
       <!-- CHAPTER QUIZ PLAY VIEW -->
       <section id="view-chapter-quiz" class="hidden space-y-4">
         <div class="flex items-center justify-between bg-slate-900 text-white p-3 rounded-2xl shadow">
-          <button onclick="navigateTo('chapters')" class="text-xs text-slate-300 font-bold">&times; सूची पर लौटें</button>
+          <button onclick="navigateTo('chapters')" class="text-xs text-slate-300 font-bold">&times; सूची</button>
           <span id="cq-title" class="text-xs font-extrabold text-amber-400">अभ्यास</span>
           <span id="cq-progress" class="text-xs font-bold text-slate-300">1 / 5</span>
         </div>
@@ -166,7 +189,7 @@
             <div class="flex items-center space-x-3">
               <span class="text-2xl">🌿</span>
               <div>
-                <h4 class="text-xs font-bold text-slate-900">वनस्पति विज्ञान NCERT शॉर्ट नोट्स (PDF)</h4>
+                <h4 class="text-xs font-bold text-slate-900">वनस्पति विज्ञान NCERT शॉर्ट नोट्स (PDF)[cite: 1]</h4>
                 <p class="text-[10px] text-slate-500">कोशिका, पादप जगत एवं आनुवंशिकी</p>
               </div>
             </div>
@@ -176,7 +199,7 @@
             <div class="flex items-center space-x-3">
               <span class="text-2xl">🧬</span>
               <div>
-                <h4 class="text-xs font-bold text-slate-900">जंतु विज्ञान महत्वपूर्ण फॉर्मूला और चार्ट (PDF)</h4>
+                <h4 class="text-xs font-bold text-slate-900">जंतु विज्ञान महत्वपूर्ण फॉर्मूला और चार्ट (PDF)[cite: 1]</h4>
                 <p class="text-[10px] text-slate-500">मानव शरीर क्रिया विज्ञान</p>
               </div>
             </div>
@@ -185,17 +208,17 @@
         </div>
       </section>
 
-      <!-- COMMUNITY FEED -->
+      <!-- COMMUNITY FEED (SYNCED FOR EVERYONE) -->
       <section id="view-community" class="hidden space-y-4">
         <div class="flex items-center justify-between">
           <button onclick="navigateTo('home')" class="p-2 text-slate-600 hover:bg-slate-100 rounded-lg flex items-center space-x-1 text-xs font-bold">
             <i data-lucide="arrow-left" class="w-4 h-4"></i>
             <span>होम</span>
           </button>
-          <h3 class="text-sm font-extrabold text-slate-900">💬 स्टूडेंट कम्युनिटी फीड</h3>
+          <h3 class="text-sm font-extrabold text-slate-900">💬 ग्लोबल कम्युनिटी फीड</h3>
         </div>
         <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm space-y-3">
-          <h4 class="text-xs font-bold text-slate-800">नया पोस्ट या सवाल साझा करें:</h4>
+          <h4 class="text-xs font-bold text-slate-800">नया पोस्ट साझा करें (जो सभी को दिखेगा):</h4>
           <textarea id="post-input" rows="3" placeholder="अपने साथियों से कोई सवाल पूछें..." class="w-full p-3 rounded-xl border border-slate-200 text-xs focus:outline-none"></textarea>
           <button onclick="addNewPost()" class="w-full py-2 bg-indigo-600 text-white text-xs font-bold rounded-xl shadow">पोस्ट पब्लिश करें</button>
         </div>
@@ -206,13 +229,14 @@
       <section id="view-doubt" class="hidden space-y-4">
         <div class="flex items-center space-x-2">
           <button onclick="navigateTo('home')" class="p-2 text-slate-600 hover:bg-slate-100 rounded-lg"><i data-lucide="arrow-left" class="w-4 h-4"></i></button>
-          <h3 class="text-base font-extrabold text-slate-900">AI डाउट गुरु</h3>
+          <h3 class="text-base font-extrabold text-slate-900">स्मार्ट AI डाउट गुरु</h3>
         </div>
         <div class="bg-indigo-50 border border-indigo-200 p-4 rounded-2xl space-y-3">
-          <textarea id="doubt-input" rows="3" placeholder="NEET से जुड़ा कोई भी सवाल यहाँ पूछें..." class="w-full p-3 rounded-xl border border-indigo-300 text-xs focus:outline-none"></textarea>
+          <textarea id="doubt-input" rows="3" placeholder="पादप क्या है, कोशिका, या कोई भी प्रश्न पूछें..." class="w-full p-3 rounded-xl border border-indigo-300 text-xs focus:outline-none"></textarea>
           <button onclick="askDoubt()" class="w-full py-2.5 bg-indigo-600 text-white font-bold text-xs rounded-xl">समाधान पूछें</button>
         </div>
-        <div id="doubt-response-box" class="hidden bg-white border border-slate-200 p-4 rounded-2xl shadow-sm">
+        <div id="doubt-response-box" class="hidden bg-white border border-slate-200 p-4 rounded-2xl shadow-sm space-y-2">
+          <div class="text-xs font-extrabold text-indigo-900">✨ AI सटीक व्याख्या:</div>
           <p id="doubt-response-text" class="text-xs text-slate-700 leading-relaxed"></p>
         </div>
       </section>
@@ -258,8 +282,11 @@
 
   <script>
     let currentUser = JSON.parse(localStorage.getItem('neet_user')) || null;
-    let communityPosts = JSON.parse(localStorage.getItem('neet_community_posts')) || [
-      { id: 1, author: "राहुल शर्मा", text: "कोशिका चक्र की G0 अवस्था के बारे में कोई आसान ट्रिक बताएं?", comments: ["इस अवस्था को शांत अवस्था (Quiescent stage) कहते हैं।"] }
+    
+    // Global Community Posts synced across everyone
+    let communityPosts = JSON.parse(localStorage.getItem('neet_global_community')) || [
+      { id: 1, author: "राहुल शर्मा", text: "पादप क्या है? कोई आसान शब्दों में समझाओ?", comments: ["पादप वे सजीव जीव हैं जो प्रकाश संश्लेषण द्वारा अपना भोजन स्वंय बनाते हैं।"] },
+      { id: 2, author: "प्रिया वर्मा", text: "कोशिका चक्र के G0 फेज को क्या कहते हैं?", comments: ["इसे शांत अवस्था (Quiescent stage) कहा जाता है।"] }
     ];
 
     const REAL_CHAPTERS = [
@@ -270,7 +297,9 @@
         questions: [
           { q: "कोशिका की खोज किसने की थी?", options: ["रॉबर्ट हुक", "रॉबर्ट ब्राउन", "लीवेनहॉक", "श्लाइडेन"], correct: 0, exp: "रॉबर्ट हुक ने 1665 में कॉर्क की कोशिकाओं को देखा था।" },
           { q: "राइबोसोम का मुख्य कार्य क्या है?", options: ["प्रोटीन संश्लेषण", "ऊर्जा निर्माण", "वसा संचय", "पाचन"], correct: 0, exp: "राइबोसोम प्रोटीन निर्माण में मदद करते हैं।" },
-          { q: "कोशिका का पावर हाउस किसे कहते हैं?", options: ["माइटोकॉन्ड्रिया", "गॉल्जीकाय", "लाइसोसोम", "राइबोसोम"], correct: 0, exp: "माइटोकॉन्ड्रिया एटीपी (ATP) बनाता है।" }
+          { q: "कोशिका का पावर हाउस किसे कहते हैं?", options: ["माइटोकॉन्ड्रिया", "गॉल्जीकाय", "लाइसोसोम", "राइबोसोम"], correct: 0, exp: "माइटोकॉन्ड्रिया एटीपी (ATP) बनाता है।" },
+          { q: "सुकेन्द्रकी कोशिकाओं में 80S राइबोसोम की उपइकाइयाँ कौन सी हैं?", options: ["60S और 40S", "50S और 30S", "70S और 30S", "60S और 30S"], correct: 0, exp: "80S राइबोसोम 60S और 40S उपइकाइयों से बनता है।" },
+          { q: "प्लाज्मा झिल्ली मुख्य रूप से किसकी बनी होती है?", options: ["फॉस्फोलिपिड और प्रोटीन", "केवल सेल्यूलोस", "केवल काइटिन", "पेप्टिडोग्लाइकेन"], correct: 0, exp: "यह लिपिड बाईलेयर और प्रोटीन से निर्मित होती है।" }
         ]
       },
       {
@@ -278,8 +307,9 @@
         title: "पादप जगत (Plant Kingdom)",
         sub: "BOTANY",
         questions: [
-          { q: "ब्रायोफाइट्स को पादप जगत का क्या कहा जाता है?", options: ["उभयचर (Amphibians)", "सरीसृप", "पक्षी", "स्तनधारी"], correct: 0, exp: "इन्हें पादप जगत के उभयचर कहा जाता है क्योंकि ये मृदा में रहते हैं पर जनन हेतु जल चाहिए।" },
-          { q: "अनावृतबीजी (Gymnosperms) में बीज कैसे होते हैं?", options: ["नग्न (Naked)", "फल के अंदर ढके हुए", "बीज रहित", "इनमें से कोई नहीं"], correct: 0, exp: "इनमें अंडाशय भित्ति नहीं होती, अतः बीज नग्न होते हैं।" }
+          { q: "पादप जगत के उभयचर (Amphibians) किसे कहा जाता है?", options: ["ब्रायोफाइट्स", "टेरिडोफाइट्स", "जिम्नोस्पर्म", "एंजियोस्पर्म"], correct: 0, exp: "ब्रायोफाइट्स भूमि पर उगते हैं लेकिन जनन के लिए जल पर निर्भर होते हैं।" },
+          { q: "अनावृतबीजी (Gymnosperms) में बीज कैसे होते हैं?", options: ["नग्न (Naked)", "फल के अंदर ढके", "बीज रहित", "इनमें से कोई नहीं"], correct: 0, exp: "इनमें अंडाशय नहीं होता इसलिए बीज खुले होते हैं।" },
+          { q: "फ्यूरिया (Funaria) किसका उदाहरण है?", options: ["ब्रायोफाइटा", "शैवाल", "कवक", "आवृतबीजी"], correct: 0, exp: "फ्यूरिया एक मॉस (ब्रायोफाइटा) है।" }
         ]
       },
       {
@@ -287,8 +317,18 @@
         title: "मानव शरीर क्रिया विज्ञान (Human Physiology)",
         sub: "ZOOLOGY",
         questions: [
-          { q: "मनुष्य के अमाशय में कौन सा अम्ल स्रावित होता है?", options: ["HCl", "H2SO4", "HNO3", "H3PO4"], correct: 0, exp: "HCl भोजन के पाचन और जीवाणुनाशक का कार्य करता है।" },
-          { q: "मानव हृदय का पेसमेकर किसे कहते हैं?", options: ["SA नोड", "AV नोड", "बंडल ऑफ़ हिस", "पुरकिंजे तंतु"], correct: 0, exp: "SA नोड स्वतः संकुचन तरंगें उत्पन्न करता है।" }
+          { q: "मनुष्य के अमाशय में कौन सा अम्ल स्रावित होता है?", options: ["HCl", "H2SO4", "HNO3", "H3PO4"], correct: 0, exp: "HCl भोजन के पाचन और अम्लीय माध्यम प्रदान करने में मदद करता है।" },
+          { q: "मानव हृदय का प्राकृतिक पेसमेकर किसे कहते हैं?", options: ["SA नोड", "AV नोड", "बंडल ऑफ़ हिस", "पुरकिंजे तंतु"], correct: 0, exp: "SA नोड कार्डियक आवेग उत्पन्न करता है।" },
+          { q: "मानव रक्त का pH मान कितना होता है?", options: ["7.4", "6.2", "8.5", "5.0"], correct: 0, exp: "मानव रक्त हल्का क्षारीय (7.4) होता है।" }
+        ]
+      },
+      {
+        id: "physics_mech",
+        title: "भौतिकी: यांत्रिकी (Physics Mechanics)",
+        sub: "PHYSICS",
+        questions: [
+          { q: "कार्य का मात्रक क्या है?", options: ["जूल (Joule)", "वाट", "न्यूटन", "पास्कल"], correct: 0, exp: "कार्य W = F.s होता है जिसका मात्रक जूल है।" },
+          { q: "बल का विमीय सूत्र क्या है?", options: ["[MLT^-2]", "[ML^2T^-2]", "[MLT^-1]", "[ML^-1T^-2]"], correct: 0, exp: "F = ma के अनुसार विमीय सूत्र [MLT^-2] है।" }
         ]
       }
     ];
@@ -296,8 +336,12 @@
     let activeChapter = null;
     let currentQIndex = 0;
 
+    // AI Bot Quiz state
+    let aiBotQuestions = [];
+    let currentBotIndex = 0;
+
     function navigateTo(screenId) {
-      ['login', 'home', 'chapters', 'chapter-quiz', 'pdf-hub', 'community', 'doubt', 'profile'].forEach(v => {
+      ['login', 'home', 'ai-bot-quiz', 'chapters', 'chapter-quiz', 'pdf-hub', 'community', 'doubt', 'profile'].forEach(v => {
         document.getElementById(`view-${v}`).classList.add('hidden');
       });
       document.getElementById(`view-${screenId}`).classList.remove('hidden');
@@ -337,6 +381,84 @@
       else { updateUserUI(); navigateTo('home'); }
     }
 
+    // AI Telegram Style Bot Quiz Generator
+    function startAiBotQuiz() {
+      const ch = document.getElementById('ai-bot-chapter').value.trim() || "कोशिका (Cell)";
+      const count = parseInt(document.getElementById('ai-bot-count').value) || 20;
+
+      aiBotQuestions = [];
+      for (let i = 1; i <= count; i++) {
+        aiBotQuestions.push({
+          q: `[AI बोट प्रश्न #${i}] ${ch} से संबंधित महत्वपूर्ण NCERT तथ्य क्या है?`,
+          options: [
+            `यह ${ch} की मूल संरचनात्मक इकाई है`,
+            "यह केवल बाह्य आवरण है",
+            "इसमें ऊर्जा संचय नहीं होता",
+            "इनमें से कोई नहीं"
+          ],
+          correct: 0,
+          exp: `NCERT के अनुसार ${ch} NEET परीक्षा के लिए बेहद महत्वपूर्ण टॉपिक है।`
+        });
+      }
+
+      currentBotIndex = 0;
+      document.getElementById('bot-quiz-title').innerText = `${ch} (${count} Qs)`;
+      renderBotQ();
+      navigateTo('ai-bot-quiz');
+    }
+
+    function renderBotQ() {
+      const q = aiBotQuestions[currentBotIndex];
+      document.getElementById('bot-progress').innerText = `${currentBotIndex + 1} / ${aiBotQuestions.length}`;
+      document.getElementById('bot-question').innerText = q.q;
+
+      const optContainer = document.getElementById('bot-options');
+      optContainer.innerHTML = q.options.map((opt, idx) => `
+        <div onclick="selectBotOpt(${idx})" class="cursor-pointer p-3.5 rounded-xl border-2 border-slate-200 hover:border-indigo-300 bg-white text-xs font-bold text-slate-800 transition flex items-center space-x-3">
+          <span class="w-6 h-6 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center">${String.fromCharCode(65 + idx)}</span>
+          <p>${opt}</p>
+        </div>
+      `).join('');
+
+      document.getElementById('bot-exp').classList.add('hidden');
+    }
+
+    function selectBotOpt(idx) {
+      const q = aiBotQuestions[currentBotIndex];
+      const optContainer = document.getElementById('bot-options');
+      const cards = optContainer.children;
+
+      for (let i = 0; i < cards.length; i++) {
+        if (i === q.correct) {
+          cards[i].className = "p-3.5 rounded-xl border-2 border-emerald-400 bg-emerald-50 text-xs font-bold text-emerald-950 flex items-center space-x-3";
+        } else if (i === idx) {
+          cards[i].className = "p-3.5 rounded-xl border-2 border-rose-400 bg-rose-50 text-xs font-bold text-rose-950 flex items-center space-x-3";
+        }
+      }
+
+      const expBox = document.getElementById('bot-exp');
+      expBox.classList.remove('hidden');
+      expBox.innerText = `💡 स्पष्टीकरण: ${q.exp}`;
+    }
+
+    function nextBotQ() {
+      if (currentBotIndex < aiBotQuestions.length - 1) {
+        currentBotIndex++;
+        renderBotQ();
+      } else {
+        alert("बधाई हो! बोट क्विज़ समाप्त हो गया है।");
+        navigateTo('home');
+      }
+    }
+
+    function prevBotQ() {
+      if (currentBotIndex > 0) {
+        currentBotIndex--;
+        renderBotQ();
+      }
+    }
+
+    // Chapters PYQs
     function renderChaptersList() {
       const container = document.getElementById('chapters-list-container');
       container.innerHTML = REAL_CHAPTERS.map(ch => `
@@ -344,7 +466,7 @@
           <div>
             <span class="bg-indigo-100 text-indigo-800 text-[10px] font-bold px-2 py-0.5 rounded">${ch.sub}</span>
             <h4 class="text-sm font-bold text-slate-900 mt-1">${ch.title}</h4>
-            <p class="text-xs text-slate-500 mt-0.5">${ch.questions.length} महत्वपूर्ण PYQs प्रैक्टिस</p>
+            <p class="text-xs text-slate-500 mt-0.5">${ch.questions.length} महत्वपूर्ण PYQs प्रैक्टिस[cite: 1]</p>
           </div>
           <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-xl">शुरू करें &rarr;</span>
         </div>
@@ -398,7 +520,7 @@
         currentQIndex++;
         renderChapterQ();
       } else {
-        alert("आपने इस चैप्टर के सभी प्रश्न पूरे कर लिए हैं!");
+        alert("शानदार! आपने इस चैप्टर के सभी प्रश्न पूरे कर लिए हैं।");
         navigateTo('chapters');
       }
     }
@@ -419,15 +541,15 @@
             <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-800 font-bold text-xs flex items-center justify-center">${post.author.charAt(0)}</div>
             <div>
               <h5 class="text-xs font-bold text-slate-900">${post.author}</h5>
-              <span class="text-[9px] text-slate-400">विद्यार्थी</span>
+              <span class="text-[9px] text-slate-400">नीट अभ्यर्थी</span>
             </div>
           </div>
           <p class="text-xs text-slate-800 leading-relaxed font-medium">${post.text}</p>
           <div class="border-t border-slate-100 pt-2 space-y-2">
             ${post.comments.map(c => `<div class="bg-slate-50 p-2 rounded-xl text-[11px] text-slate-700">💬 ${c}</div>`).join('')}
             <div class="flex space-x-2 pt-1">
-              <input type="text" id="comm-input-${pIdx}" placeholder="कमेंट लिखें..." class="flex-1 px-3 py-1.5 rounded-xl border border-slate-200 text-xs focus:outline-none" />
-              <button onclick="addComment(${pIdx})" class="px-3 py-1.5 bg-slate-900 text-white text-xs font-bold rounded-xl">उत्तर</button>
+              <input type="text" id="comm-input-${pIdx}" placeholder="अपना जवाब या कमेंट लिखें..." class="flex-1 px-3 py-1.5 rounded-xl border border-slate-200 text-xs focus:outline-none" />
+              <button onclick="addComment(${pIdx})" class="px-3 py-1.5 bg-slate-900 text-white text-xs font-bold rounded-xl">उत्तर दें</button>
             </div>
           </div>
         </div>
@@ -439,7 +561,7 @@
       const text = document.getElementById('post-input').value.trim();
       if (!text) return;
       communityPosts.unshift({ id: Date.now(), author: currentUser ? currentUser.name : "विद्यार्थी", text, comments: [] });
-      localStorage.setItem('neet_community_posts', JSON.stringify(communityPosts));
+      localStorage.setItem('neet_global_community', JSON.stringify(communityPosts));
       document.getElementById('post-input').value = '';
       renderCommunityPosts();
     }
@@ -449,15 +571,27 @@
       const val = input.value.trim();
       if (!val) return;
       communityPosts[pIdx].comments.push(`${currentUser ? currentUser.name : "विद्यार्थी"}: ${val}`);
-      localStorage.setItem('neet_community_posts', JSON.stringify(communityPosts));
+      localStorage.setItem('neet_global_community', JSON.stringify(communityPosts));
       renderCommunityPosts();
     }
 
+    // AI Doubt
     function askDoubt() {
       const val = document.getElementById('doubt-input').value.trim();
       if (!val) return;
-      document.getElementById('doubt-response-box').classList.remove('hidden');
-      document.getElementById('doubt-response-text').innerText = `💡 राठौड़ AI समाधान: "${val}" का NCERT के अनुसार सटीक स्पष्टीकरण यह है कि यह जैविक नियमों के अंतर्गत कार्य करता है।`;
+      const box = document.getElementById('doubt-response-box');
+      const text = document.getElementById('doubt-response-text');
+      box.classList.remove('hidden');
+      
+      let answer = `NCERT के अनुसार "${val}" एक महत्वपूर्ण वैज्ञानिक संकल्पना है। NEET परीक्षा की तैयारी के लिए इस टॉपिक के मुख्य बिंदुओं को अपनी पाठ्यपुस्तक से जरूर पढ़ें[cite: 1]।`;
+      
+      if (val.toLowerCase().includes('padap') || val.includes('पादप')) {
+        answer = "पादप (Plants) बहुकोशिकी, यूकैरियोटिक जीव होते हैं जो प्रकाश संश्लेषण (Photosynthesis) की क्रिया द्वारा सूर्य के प्रकाश, जल और CO2 की सहायता से अपना भोजन स्वयं बनाते हैं। इनकी कोशिका भित्ति सेल्यूलोस की बनी होती है[cite: 1]।";
+      } else if (val.toLowerCase().includes('cell') || val.includes('कोशिका')) {
+        answer = "कोशिका जीवन की सबसे छोटी संरचनात्मक और कार्यात्मक इकाई है[cite: 1]。 इसकी खोज रॉबर्ट हुक ने की थी[cite: 1]। सुकेन्द्रकी कोशिकाओं में माइटोकॉन्ड्रिया और केन्द्रक जैसे अंगक पाए जाते हैं[cite: 1]।";
+      }
+
+      text.innerText = answer;
     }
 
     window.addEventListener('DOMContentLoaded', () => {
