@@ -17,10 +17,10 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Build APK
-      uses: gradle/gradle-build-action@v3
-      with:
-        arguments: assembleDebug
+    - name: Download Gradle and Build
+      run: |
+        # ग्रैडल को सीधे सिस्टम पर इंस्टॉल करके बिना wrapper के बिल्ड करना
+        gradle assembleDebug --no-daemon
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
